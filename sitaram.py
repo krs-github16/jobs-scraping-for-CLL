@@ -282,20 +282,20 @@ def tno(company_name, companies_details):
             for item in itemAll.findAll('a'):
                 job_specific_url = urljoin(career_page_url, item.get('href'))
 
-            for n in item.find('h3'):
-                job_title = n
-            for l in item.find('li'):
-                job_location = l
+                for n in item.find('h3'):
+                  job_title = n
+                for l in item.find('li'):
+                  job_location = l
 
-            job_description = np.nan
+                job_description = np.nan
 
-            job_type = np.nan
+                job_type = np.nan
 
-            years_of_experience = np.nan
+                years_of_experience = np.nan
 
-            job_department = np.nan
+                job_department = np.nan
 
-            df = df.append(pd.Series(data=[company_name,
+                df = df.append(pd.Series(data=[company_name,
                                            job_title,
                                            job_description,
                                            job_location,
