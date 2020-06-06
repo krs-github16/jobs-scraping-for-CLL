@@ -28,6 +28,8 @@ def niramai(company_name,companies_details):
     # company_name = 'NIRAMAI'
     # career_page_url = 'https://www.niramai.com/careers/'
 
+    print(company_name)
+
     career_page_url = companies_details[company_name]['career_page_url']
     sector =  companies_details[company_name]['sector']
 
@@ -71,6 +73,8 @@ def niramai(company_name,companies_details):
 def locus(company_name,companies_details):
     # company_name = 'Locus'
     # career_page_url = 'https://locus.freshteam.com/jobs'
+
+    print(company_name)
 
     career_page_url = companies_details[company_name]['career_page_url']
     sector =  companies_details[company_name]['sector']
@@ -128,6 +132,8 @@ def oneorigin(company_name,companies_details):
     # company_name = 'ONEORIGIN'
     # career_page_url = 'https://www.oneorigin.us/careers/'
 
+    print(company_name)
+
     career_page_url = companies_details[company_name]['career_page_url']
     sector =  companies_details[company_name]['sector']
 
@@ -171,9 +177,11 @@ def oneorigin(company_name,companies_details):
 
 
 def alphasense(company_name,companies_details):
-    # company_name = 'ALPHASENSE'
 
+    # company_name = 'ALPHASENSE'
     # career_page_url = 'https://www.alpha-sense.com/careers'
+
+    print(company_name)
 
     career_page_url = companies_details[company_name]['career_page_url']
     sector =  companies_details[company_name]['sector']
@@ -235,11 +243,12 @@ def alphasense(company_name,companies_details):
 
     return df
 
-
 def sayint(company_name,companies_details):
 
     #     company_name = 'sayint'
     #     career_page_url = 'https://sayint.freshteam.com/jobs'
+
+    print(company_name)
 
     career_page_url = companies_details[company_name]['career_page_url']
     sector =  companies_details[company_name]['sector']
@@ -288,8 +297,11 @@ def sayint(company_name,companies_details):
 
 
 def casetext(company_name,companies_details):
+
     #     company_name = 'CASETEXT'
     #     career_page_url = 'https://jobs.lever.co/casetext/'
+
+    print(company_name)
 
     career_page_url = companies_details[company_name]['career_page_url']
     sector =  companies_details[company_name]['sector']

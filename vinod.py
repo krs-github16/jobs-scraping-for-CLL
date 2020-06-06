@@ -22,6 +22,8 @@ def greenhouse_platform(company_name,companies_details):
 
     career_page_url = companies_details[company_name]['career_page_url']
     sector =  companies_details[company_name]['sector']
+
+    print(company_name)
     
     try:
         job_type, years_of_experience = [''] * 2
@@ -77,6 +79,8 @@ def workday_cognex(company_name,companies_details):
     career_page_url = companies_details[company_name]['career_page_url']
     sector =  companies_details[company_name]['sector']
 
+    print(company_name)
+
     count=0
     job_description, job_type, years_of_experience, job_department = [''] * 4
     try:
@@ -110,6 +114,8 @@ def kla_tencor(company_name,companies_details):
     career_page_url = companies_details[company_name]['career_page_url']
     sector =  companies_details[company_name]['sector']
 
+    print(company_name)
+
     count, page = 0, 1
     job_description, job_type, years_of_experience, job_department = [''] * 4
     try:
@@ -141,6 +147,8 @@ def hp(company_name,companies_details):
 
     career_page_url = companies_details[company_name]['career_page_url']
     sector =  companies_details[company_name]['sector']
+
+    print(company_name)
 
     count = 0
     try:

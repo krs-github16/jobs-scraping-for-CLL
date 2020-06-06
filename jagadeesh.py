@@ -23,6 +23,8 @@ def Haptik_AI(company_name,companies_details):
 	career_page_url = companies_details[company_name]['career_page_url']
 	sector = companies_details[company_name]['sector']
 
+	print(company_name)
+
 	html = requests.get(career_page_url).text
 	soup = BS(html, 'lxml')
 
@@ -80,6 +82,8 @@ def Gramener(company_name,companies_details):
 	career_page_url = companies_details[company_name]['career_page_url']
 	sector = companies_details[company_name]['sector']
 
+	print(company_name)
+
 	html = requests.get(career_page_url).text
 	soup = BS(html, 'lxml')
 
@@ -130,6 +134,8 @@ def Boost_AI(company_name,companies_details):
 	career_page_url = companies_details[company_name]['career_page_url']
 	sector = companies_details[company_name]['sector']
 
+	print(company_name)
+
 	html = requests.get(career_page_url).text
 	soup = BS(html, 'lxml')
 
@@ -179,6 +185,8 @@ def Lumiq_FreshTeam(company_name,companies_details):
 
 	career_page_url = companies_details[company_name]['career_page_url']
 	sector = companies_details[company_name]['sector']
+
+	print(company_name)
 
 	base = 'https://lumiq.freshteam.com/'
 
@@ -243,6 +251,8 @@ def neurala(company_name, companies_details):
 	career_page_url = companies_details[company_name]['career_page_url']
 	sector = companies_details[company_name]['sector']
 
+	print(company_name)
+
 	html = requests.get(career_page_url).text
 	soup = BS(html, 'lxml')
 
@@ -292,6 +302,8 @@ def honeywell(company_name, companies_details):
 	career_page_url = companies_details[company_name]['career_page_url']
 	sector = companies_details[company_name]['sector']
 
+	print(company_name)
+
 	base = 'https://careers.honeywell.com/us/en/job/'
 	link_format = 'https://careers.honeywell.com/us/en/search-results?from={}&s=1'
 	count = 0
@@ -305,7 +317,7 @@ def honeywell(company_name, companies_details):
 			html = res.text
 			soup = BS(html, 'lxml')
 
-			js = soup.find('script').get_text().strip()
+			js = str(soup.find('script'))      #soup.find('script').get_text().strip()
 			reg = re.search(r'"jobs":(.*),"aggregations"', js)
 			data = reg.groups()[0]
 			jobs = json.loads(data)
@@ -354,6 +366,8 @@ def honeywell(company_name, companies_details):
 def IHSMarkit(company_name, companies_details):
 	career_page_url = companies_details[company_name]['career_page_url']
 	sector = companies_details[company_name]['sector']
+
+	print(company_name)
 
 	base = 'https://careers.ihsmarkit.com/'
 	link_format = 'https://careers.ihsmarkit.com/search.php?page={}'
@@ -414,6 +428,8 @@ def IHSMarkit(company_name, companies_details):
 def x_ai(company_name, companies_details):
 	career_page_url = companies_details[company_name]['career_page_url']
 	sector = companies_details[company_name]['sector']
+
+	print(company_name)
 
 	html = requests.get(career_page_url).text
 	soup = BS(html, 'lxml')

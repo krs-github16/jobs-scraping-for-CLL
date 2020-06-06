@@ -18,7 +18,20 @@ from krs import niramai,locus, oneorigin, alphasense, sayint, casetext
 from manoj import zebra, episource, vicarious, uipath
 from vinod import greenhouse_platform, workday_cognex, kla_tencor, hp
 from jagadeesh import Haptik_AI, Gramener, Boost_AI, Lumiq_FreshTeam, neurala, honeywell, IHSMarkit, x_ai
-from sitaram import abto,kritikal,atlas_elektronik,tobii,philips,tno
+from sitaram import abto,kritikal,atlas_elektronik,tobii,philips,tno,visenze,axis,vathos
+
+
+def timeit(method):
+    def timed(*args, **kw):
+        ts = time.time()
+        result = method(*args, **kw)
+        te = time.time()
+
+        print('%r (%r) %2.2f sec' % \
+              (method.__name__, kw, te - ts))
+        return result
+
+    return timed
 
 
 executable_path=r'chromedriver_win32\chromedriver.exe'
@@ -111,7 +124,7 @@ if __name__=='__main__':
                                  vicarious('vicarious',companies_details),
                                  uipath('UI path',companies_details),
                                  greenhouse_platform('immersive labs', companies_details),
-                                 #workday_cognex('COGNEX', companies_details),
+                                 workday_cognex('COGNEX', companies_details),
                                  kla_tencor('Kla Tencor', companies_details),
                                  hp('hp labs',companies_details),
                                  Haptik_AI('haptik.ai',companies_details),
@@ -127,7 +140,7 @@ if __name__=='__main__':
                                  greenhouse_platform('freenome', companies_details),
                                  greenhouse_platform('nauto', companies_details),
                                  neurala('neurala',companies_details),
-                                 #honeywell('honeywell',companies_details),
+                                 honeywell('honeywell',companies_details),
                                  IHSMarkit('IHS Markit',companies_details),
                                  x_ai('x.ai',companies_details),
                                  abto('abto software',companies_details),
@@ -135,7 +148,10 @@ if __name__=='__main__':
                                  atlas_elektronik('atlas elektronik',companies_details),
                                  tobii('tobii',companies_details),
                                  philips('philips',companies_details),
-                                 tno('TNO',companies_details)],1):
+                                 tno('TNO',companies_details),
+                                 visenze('visenze',companies_details),
+                                 axis('axis communications',companies_details),
+                                 vathos('Vathos Robotics',companies_details)],1):
 
         print(index,func.shape)
         frames.append(func)

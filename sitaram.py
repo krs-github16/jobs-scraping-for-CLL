@@ -20,6 +20,8 @@ def abto(company_name, companies_details):
     career_page_url = 'https://careers.abtosoftware.com/?s=&vacancy-department='  # companies_details[company_name]['career_page_url']
     sector = companies_details[company_name]['sector']
 
+    print(company_name)
+
     try:
 
         html = requests.get(career_page_url).text
@@ -73,6 +75,8 @@ def kritikal(company_name, companies_details):
     career_page_url = 'http://careers.kritikalvision.ai/jobs/'  # companies_details[company_name]['career_page_url']
     sector = companies_details[company_name]['sector']
 
+    print(company_name)
+
     df = pd.DataFrame(columns=fields_needed)
 
     try:
@@ -122,6 +126,8 @@ def atlas_elektronik(company_name, companies_details):
     career_page_url = companies_details[company_name]['career_page_url']
     sector = companies_details[company_name]['sector']
 
+    print(company_name)
+
     df = pd.DataFrame(columns=fields_needed)
 
     try:
@@ -168,6 +174,8 @@ def atlas_elektronik(company_name, companies_details):
 def tobii(company_name, companies_details):
     career_page_url = companies_details[company_name]['career_page_url']
     sector = companies_details[company_name]['sector']
+
+    print(company_name)
 
     df = pd.DataFrame(columns=fields_needed)
 
@@ -222,6 +230,8 @@ def philips(company_name,companies_details):
     career_page_url = 'https://jobs.philips.com/jobs/#200'  # companies_details[company_name]['career_page_url']
     sector = companies_details[company_name]['sector']
 
+    print(company_name)
+
     df = pd.DataFrame(columns=fields_needed)
 
     try:
@@ -271,6 +281,8 @@ def tno(company_name, companies_details):
     career_page_url = 'https://www.tno.nl/nl/career/vacatures/?p=0'  # companies_details[company_name]['career_page_url']
     sector = companies_details[company_name]['sector']
 
+    print(company_name)
+
     df = pd.DataFrame(columns=fields_needed)
 
     html = requests.get(career_page_url).text
@@ -313,11 +325,127 @@ def tno(company_name, companies_details):
 
     return df
 
+
+def visenze(company_name, companies_details):
+    career_page_url = companies_details[company_name]['career_page_url']
+    sector = companies_details[company_name]['sector']
+
+    print(company_name)
+
+    try:
+        html = requests.get(career_page_url).text
+        soup = BS(html, 'lxml')
+        df = pd.DataFrame(columns=fields_needed)
+        for itemAll in soup.findAll('div', {'class': 'container'}):
+            for item in itemAll.findAll('div', {'class': ['col-12', 'aos-init', 'aos-animate']}):
+                job_title = item.find('h3')
+                for z in item.findAll('a'):
+                    job_specific_url = z.get('href')
+                if job_title != None:
+                    i = item.find('p')
+                    s = []
+                    for a in i.findAll('span'):
+                        s.append([a.text])
+                    job_department = s[0]
+                    job_location = s[1]
+                    job_description = np.nan
+                    job_type = np.nan
+                    years_of_experience = np.nan
+                    df = df.append(pd.Series(data=[company_name,
+                                                   job_title,
+                                                   job_description,
+                                                   job_location,
+                                                   job_type,
+                                                   years_of_experience,
+                                                   job_department,
+                                                   job_specific_url,
+                                                   career_page_url,
+                                                   sector], index=fields_needed), ignore_index=True)
+    except Exception as error:
+        print(error)
+        print("<<<<<<<<<<<<<<<<<<<<< This company got an issue %s >>>>>>>>>>>>>>>>>>>>>>>" % career_page_url)
+    return df
+
+
+def axis(company_name, companies_details):
+    career_page_url = 'https://www.axis.com/about-axis/career/open-positions?'  # companies_details[company_name]['career_page_url']
+    sector = companies_details[company_name]['sector']
+
+    print(company_name)
+
+    try:
+        html = requests.get(career_page_url).text
+        soup = BS(html, 'lxml')
+        df = pd.DataFrame(columns=fields_needed)
+        for itemAll in soup.findAll('td', {'class': 'views-field-field-workday-application-url'}):
+            job_location = np.nan
+            for a in itemAll.findAll('a'):
+                job_title = a.text
+                job_specific_url = a.get('href')
+            job_description = np.nan
+            job_type = np.nan
+            years_of_experience = np.nan
+            job_department = np.nan
+            df = df.append(pd.Series(data=[company_name,
+                                           job_title,
+                                           job_description,
+                                           job_location,
+                                           job_type,
+                                           years_of_experience,
+                                           job_department,
+                                           job_specific_url,
+                                           career_page_url,
+                                           sector], index=fields_needed), ignore_index=True)
+    except Exception as error:
+        print(error)
+        print("<<<<<<<<<<<<<<<<<<<<< This company got an issue %s >>>>>>>>>>>>>>>>>>>>>>>" % career_page_url)
+    return df
+
+
+def vathos(company_name, companies_details):
+    career_page_url = companies_details[company_name]['career_page_url']
+    sector = companies_details[company_name]['sector']
+
+    print(company_name)
+
+    try:
+        html = requests.get(career_page_url).text
+        soup = BS(html, 'lxml')
+        df = pd.DataFrame(columns=fields_needed)
+        for item in soup.findAll('div', {'class': 'vc_tta-panel'}):
+            job_title = item.find('span').text
+            job_description = item.find('div', {'class': 'wpb_wrapper'}).text
+            job_description = job_description.replace('\n', '')
+            job_description = job_description.replace('Read more', '')
+            for a in item.findAll('a'):
+                job_specific_url = urljoin(career_page_url, a.get('href'))
+            job_location = np.nan
+            job_type = np.nan
+            years_of_experience = np.nan
+            job_department = np.nan
+            df = df.append(pd.Series(data=[company_name,
+                                           job_title,
+                                           job_description,
+                                           job_location,
+                                           job_type,
+                                           years_of_experience,
+                                           job_department,
+                                           job_specific_url,
+                                           career_page_url,
+                                           sector], index=fields_needed), ignore_index=True)
+
+    except Exception as error:
+        print(error)
+        print("<<<<<<<<<<<<<<<<<<<<< This company got an issue %s >>>>>>>>>>>>>>>>>>>>>>>" % career_page_url)
+    return df
+
 #abto('abto software',companies_details)
 #kritikal('KritiKal Solutions',companies_details)
 #atlas_elektronik('atlas elektronik',companies_details)
 #tobii('tobii',companies_details)
 #philips('philips',companies_details)
 #tno('TNO',companies_details)
-
+#visenze('visenze',companies_details)
+#axis('axis communications',companies_details)
+#vathos('Vathos Robotics',companies_details)
 

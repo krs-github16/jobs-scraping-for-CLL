@@ -23,6 +23,8 @@ def zebra(company_name,companies_details):
     career_page_url = companies_details[company_name]['career_page_url']
     sector = companies_details[company_name]['sector']
 
+    print(company_name)
+
     headers = {
         'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/81.0.4044.138 Safari/537.36',
         'accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9',
@@ -62,6 +64,8 @@ def episource(company_name,companies_details):
 
     career_page_url = companies_details[company_name]['career_page_url']
     sector = companies_details[company_name]['sector']
+
+    print(company_name)
 
     headers = {
         'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/81.0.4044.138 Safari/537.36',
@@ -105,6 +109,8 @@ def vicarious(company_name,companies_details):
     career_page_url = companies_details[company_name]['career_page_url']
     sector = companies_details[company_name]['sector']
 
+    print(company_name)
+
     df = pd.DataFrame(columns=fields_needed)
     try:
         response = requests.get('https://api.lever.co/v0/postings/vicarious?mode=json')
@@ -142,6 +148,8 @@ def uipath(company_name,companies_details):
 
     career_page_url = companies_details[company_name]['career_page_url']
     sector = companies_details[company_name]['sector']
+
+    print(company_name)
 
     df = pd.DataFrame(columns=fields_needed)
     try:
