@@ -182,3 +182,75 @@ def hp(company_name,companies_details):
     except Exception as error:
         print(error)
         print("<<<<<<<<<<<<<<<<<<<<< This company got an issue %s >>>>>>>>>>>>>>>>>>>>>>>" % career_page_url)
+
+
+def lever_api(company_name,companies_details):
+
+    career_page_url = companies_details[company_name]['career_page_url']
+    sector =  companies_details[company_name]['sector']
+
+    count = 0
+    df = pd.DataFrame(columns=fields_needed)
+    job_description, job_type, years_of_experience, job_department, job_location = [''] * 5
+    try:
+        if 'www' in career_page_url:
+            domain = career_page_url.strip('/').split('/')[2].split('.')[1]
+        elif 'jobs.' in career_page_url:
+            domain = career_page_url.strip('/').split('/')[-1]
+        else:
+            domain = career_page_url.strip('/').split('/')[2].split('.com')[0]
+        response = requests.get('https://api.lever.co/v0/postings/%s?group=team&mode=json' % domain).json()
+        for job_response in response:
+            jobs_data = job_response.get('postings', [])
+            for job in jobs_data:
+                job_title = job.get('text', '')
+                job_specific_url = job.get('hostedUrl', '')
+                job_description = job.get('descriptionPlain', '')
+                job_location = job.get('categories', {}).get('location', '')
+                job_type = job.get('categories', {}).get('commitment', '')
+                job_department = job.get('categories', {}).get('team', '')
+                count += 1
+                df = df.append(pd.Series(data=[company_name, job_title, job_description, job_location,
+                                               job_type, years_of_experience, job_department, job_specific_url,
+                                               career_page_url,sector], index=fields_needed), ignore_index=True)
+
+        return df
+    except Exception as error:
+        print(error)
+        print("<<<<<<<<<<<<<<<<<<<<< This company got an issue %s >>>>>>>>>>>>>>>>>>>>>>>" % career_page_url)
+
+
+def hire_withgoogle_api(company_name,companies_details):
+
+    career_page_url = companies_details[company_name]['career_page_url']
+    sector =  companies_details[company_name]['sector']
+
+    df = pd.DataFrame(columns=fields_needed)
+    if 'withgoogle' in career_page_url:
+        domain = career_page_url.strip('/').split('/')[-1]
+    else:
+        domain = career_page_url.split('/')[2].replace('.', '')
+    job_description, job_type, years_of_experience, job_department, job_location = [''] * 5
+    count = 0
+    try:
+        response = requests.get('https://hire.withgoogle.com/v2/api/t/%s/public/jobs' % domain).json()
+        for job in response:
+            job_title = job.get('title', '').strip()
+            job_specific_url = job.get('url', '')
+            descp_data = job.get('description', '')
+            sel = Selector(text=descp_data)
+            job_description = ' '.join(sel.xpath('//text()').extract()).strip()
+            job_location = job.get('jobLocation', {}).get('address', '').get('addressLocality', '') + ', ' + \
+                           job.get('jobLocation', {}).get('address', '').get('addressRegion', '') + ', ' + \
+                           job.get('jobLocation', {}).get('address', '').get('addressRegion', '')
+            job_type = job.get('employmentType', '')
+            job_department = job.get('hiringOrganization', {}).get('department', {}).get('name', '')
+            count += 1
+            df = df.append(pd.Series(data=[company_name, job_title, job_description, job_location,
+                                           job_type, years_of_experience, job_department, job_specific_url,
+                                           career_page_url,sector], index=fields_needed), ignore_index=True)
+
+        return df
+    except Exception as error:
+        print(error)
+        print("<<<<<<<<<<<<<<<<<<<<< This company got an issue %s >>>>>>>>>>>>>>>>>>>>>>>" % career_page_url)

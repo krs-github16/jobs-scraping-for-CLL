@@ -15,8 +15,8 @@ keyword_processor = KeywordProcessor()
 #from pytablewriter import MarkdownTableWriter
 
 from krs import niramai,locus, oneorigin, alphasense, sayint, casetext
-from manoj import zebra, episource, vicarious, uipath
-from vinod import greenhouse_platform, workday_cognex, kla_tencor, hp
+from manoj import zebra, episource, vicarious, uipath, angel_co
+from vinod import greenhouse_platform, workday_cognex, kla_tencor, hp, lever_api, hire_withgoogle_api
 from jagadeesh import Haptik_AI, Gramener, Boost_AI, Lumiq_FreshTeam, neurala, honeywell, IHSMarkit, x_ai
 from sitaram import abto,kritikal,atlas_elektronik,tobii,philips,tno,visenze,axis,vathos
 
@@ -151,7 +151,21 @@ if __name__=='__main__':
                                  tno('TNO',companies_details),
                                  visenze('visenze',companies_details),
                                  axis('axis communications',companies_details),
-                                 vathos('Vathos Robotics',companies_details)],1):
+                                 vathos('Vathos Robotics',companies_details),
+                                 greenhouse_platform('aeye', companies_details),
+                                 greenhouse_platform('C3', companies_details),
+                                 lever_api('openAI',companies_details),
+                                 hire_withgoogle_api('cognitive scale',companies_details),
+                                 hire_withgoogle_api('avaamo',companies_details),
+                                 angel_co('niki.ai',companies_details),
+                                 angel_co('vernacular.ai',companies_details),
+                                 angel_co('saarthi.ai',companies_details),
+                                 angel_co('Ori',companies_details),
+                                 angel_co('floatbot.ai',companies_details),
+                                 angel_co('Butterfly Network',companies_details),
+                                 angel_co('arya.ai',companies_details),
+                                 angel_co('pixuate',companies_details),
+                                 angel_co('couture.ai',companies_details)],1):
 
         print(index,func.shape)
         frames.append(func)

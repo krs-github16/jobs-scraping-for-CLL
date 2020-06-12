@@ -1,7 +1,10 @@
+from selenium import webdriver
+
 from bs4 import BeautifulSoup as BS
 import requests
 import numpy as np
 import json
+import time
 import pandas as pd
 
 fields_needed=['Company Name',
@@ -14,6 +17,8 @@ fields_needed=['Company Name',
                  'Job Specific URL',
                  'Career Page URL',
                   'Market/Sector']
+
+driver = webdriver.Firefox(executable_path='C:/Users/bmkumar/Downloads/geckodriver.exe')
 
 def zebra(company_name,companies_details):
 
@@ -176,6 +181,46 @@ def uipath(company_name,companies_details):
                                                        job_specific_url,
                                                    career_page_url,sector], index=fields_needed), ignore_index=True)
     
+    except Exception as e:
+        print(e)
+        print("<<<<<<<<<<<<<<<<<<<<< This company got an issue %s >>>>>>>>>>>>>>>>>>>>>>>" % career_page_url)
+    return df
+
+
+def angel_co(company_name, companies_details):
+
+    career_page_url = companies_details[company_name]['career_page_url']
+    sector = companies_details[company_name]['sector']
+
+    try:
+        driver.get(career_page_url)
+        time.sleep(2)
+        page_source = driver.page_source
+        count = 0
+        df = pd.DataFrame()
+        for job in BS(page_source, 'html.parser').find_all(class_='component_e6bd3'):
+            try:
+                if job.find('a'):
+                    count += 1
+                    job_title = job.find('h4').text.strip()
+                    job_specific_url = 'https://angel.co' + job.find('a').get('href')
+                    job_location = job.find(class_='location_5ec2b').text
+                    job_description = job.find('p').text
+                    job_type = np.nan
+                    years_of_experience = np.nan
+                    job_department = job.find('h6').text
+                    df = df.append(pd.Series(data=[company_name,
+                                                   job_title,
+                                                   job_description,
+                                                   job_location,
+                                                   job_type,
+                                                   years_of_experience,
+                                                   job_department,
+                                                   job_specific_url,
+                                                   career_page_url,
+                                                   sector], index=fields_needed), ignore_index=True)
+            except Exception as e:
+                print(e)
     except Exception as e:
         print(e)
         print("<<<<<<<<<<<<<<<<<<<<< This company got an issue %s >>>>>>>>>>>>>>>>>>>>>>>" % career_page_url)
