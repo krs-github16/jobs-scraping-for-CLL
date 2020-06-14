@@ -7,18 +7,17 @@ import json
 import time
 import pandas as pd
 
-fields_needed=['Company Name',
-                 'Job Title',
-                 'Job Description',
-                 'Job Location',
-                 'Job Type',
-                 'Years of Experience',
-                 'Job Department',
-                 'Job Specific URL',
-                 'Career Page URL',
-                  'Market/Sector']
-
-driver = webdriver.Firefox(executable_path='C:/Users/bmkumar/Downloads/geckodriver.exe')
+fields_needed = ['Company Name',
+               'Job Title',
+               'Job Description',
+               'Job Location',
+               'Job Type',
+               'Years of Experience',
+               'Job Department',
+               'Job Specific URL',
+               'Career Page URL',
+               'Market/Sector']
+gecko_path = r'C:\Users\krajasekhara\PycharmProjects\CLL jobs scraping\drivers\geckodriver\geckodriver.exe'
 
 def zebra(company_name,companies_details):
 
@@ -39,7 +38,7 @@ def zebra(company_name,companies_details):
         response = requests.get(career_page_url, headers=headers)
         if response:
             for job in BS(response.text,'html.parser').find_all('a',class_='comeet-position'):
-            #     print(job.find(class_='comeet-position-meta').text.strip())
+            #   print(job.find(class_='comeet-position-meta').text.strip())
                 job_title = job.find(class_='comeet-position-name').text.strip()
                 job_specific_url = job.get('href')
                 job_location =np.nan
@@ -192,6 +191,10 @@ def angel_co(company_name, companies_details):
     career_page_url = companies_details[company_name]['career_page_url']
     sector = companies_details[company_name]['sector']
 
+    print(company_name)
+
+    driver = webdriver.Firefox(executable_path=gecko_path)
+
     try:
         driver.get(career_page_url)
         time.sleep(2)
@@ -224,9 +227,19 @@ def angel_co(company_name, companies_details):
     except Exception as e:
         print(e)
         print("<<<<<<<<<<<<<<<<<<<<< This company got an issue %s >>>>>>>>>>>>>>>>>>>>>>>" % career_page_url)
+    driver.close()
     return df
 
-# zebra('Zebra Medical Vision','https://www.zebra-med.com/careers'),
+#  zebra('Zebra Medical Vision','https://www.zebra-med.com/careers'),
 #  episource('Episource LLC','https://www.episource.com/careers/'),
 #  vicarious('Vicarious','https://www.vicarious.com/careers/'),
 #  uipath('UI Path','https://www.uipath.com/company/careers/jobs')
+#  angel_co('niki.ai',companies_details),
+#  angel_co('vernacular.ai',companies_details),
+#  angel_co('saarthi.ai',companies_details),
+#  angel_co('Ori',companies_details),
+#  angel_co('floatbot.ai',companies_details),
+#  angel_co('Butterfly Network',companies_details),
+#  angel_co('arya.ai',companies_details),
+#  angel_co('pixuate',companies_details),
+#  angel_co('couture.ai',companies_details)

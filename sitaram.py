@@ -17,7 +17,7 @@ fields_needed=['Company Name',
 
 
 def abto(company_name, companies_details):
-    career_page_url = 'https://careers.abtosoftware.com/?s=&vacancy-department='  # companies_details[company_name]['career_page_url']
+    career_page_url = companies_details[company_name]['career_page_url']
     sector = companies_details[company_name]['sector']
 
     print(company_name)
@@ -72,7 +72,7 @@ def abto(company_name, companies_details):
 
 
 def kritikal(company_name, companies_details):
-    career_page_url = 'http://careers.kritikalvision.ai/jobs/'  # companies_details[company_name]['career_page_url']
+    career_page_url = companies_details[company_name]['career_page_url']
     sector = companies_details[company_name]['sector']
 
     print(company_name)
@@ -227,7 +227,7 @@ def tobii(company_name, companies_details):
 
 
 def philips(company_name,companies_details):
-    career_page_url = 'https://jobs.philips.com/jobs/#200'  # companies_details[company_name]['career_page_url']
+    career_page_url =  companies_details[company_name]['career_page_url']
     sector = companies_details[company_name]['sector']
 
     print(company_name)
@@ -278,7 +278,7 @@ def philips(company_name,companies_details):
 
 def tno(company_name, companies_details):
 
-    career_page_url = 'https://www.tno.nl/nl/career/vacatures/?p=0'  # companies_details[company_name]['career_page_url']
+    career_page_url = companies_details[company_name]['career_page_url']
     sector = companies_details[company_name]['sector']
 
     print(company_name)
@@ -368,7 +368,7 @@ def visenze(company_name, companies_details):
 
 
 def axis(company_name, companies_details):
-    career_page_url = 'https://www.axis.com/about-axis/career/open-positions?'  # companies_details[company_name]['career_page_url']
+    career_page_url = companies_details[company_name]['career_page_url']
     sector = companies_details[company_name]['sector']
 
     print(company_name)

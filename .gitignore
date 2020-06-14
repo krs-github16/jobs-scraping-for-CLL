@@ -1,5 +1,6 @@
 .idea/*
 .ipynb_checkpoints/*
 __pycache__/*
-chromedriver_win32/*
+drivers/*
 references/*
+*.log

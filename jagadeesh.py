@@ -4,6 +4,10 @@ import pandas as pd
 from bs4 import BeautifulSoup as BS
 from urllib.request import urljoin
 import pdb
+import re, json, time
+from selenium import webdriver
+
+chrome_path = r'C:\Users\krajasekhara\PycharmProjects\CLL jobs scraping\drivers\chromedriver_win32\chromedriver.exe'
 
 
 fields_needed=['Company Name',
@@ -481,6 +485,240 @@ def x_ai(company_name, companies_details):
 			print("<<<<<<<<<<<<<<<<<<<<< This company got an issue %s >>>>>>>>>>>>>>>>>>>>>>>" % career_page_url)
 
 	return df
+
+
+def geosys(company_name, companies_details):
+	career_page_url = companies_details[company_name]['career_page_url']
+	sector = companies_details[company_name]['sector']
+
+	print(company_name)
+
+	html = requests.get(career_page_url).text
+	soup = BS(html, 'lxml')
+
+	divs = soup.find_all('div', {'class': 'lae-team-member-text'})
+
+	df = pd.DataFrame(columns=fields_needed)
+
+	for div in divs:
+		try:
+			job_title = div.find('a').get_text().strip()
+
+			job_description = np.nan
+
+			job_location = np.nan
+
+			job_type = np.nan
+
+			years_of_experience = np.nan
+
+			job_department = np.nan
+
+			job_specific_url = div.find('a')['href']
+
+			df = df.append(pd.Series(data=[company_name,
+										   job_title,
+										   job_description,
+										   job_location,
+										   job_type,
+										   years_of_experience,
+										   job_department,
+										   job_specific_url,
+										   career_page_url,
+										   sector], index=fields_needed), ignore_index=True)
+
+
+		except Exception as error:
+
+			print(error)
+
+			print("<<<<<<<<<<<<<<<<<<<<< This company got an issue %s >>>>>>>>>>>>>>>>>>>>>>>" % career_page_url)
+
+	return df
+
+
+def unbxd(company_name, companies_details):
+
+	career_page_url = 'https://unbxd.com/careers/openings/'  # companies_details[company_name]['career_page_url']
+	sector = companies_details[company_name]['sector']
+
+	print(company_name)
+
+	driver = webdriver.Chrome(executable_path=chrome_path)
+
+	driver.minimize_window()
+
+	driver.get(career_page_url)
+	time.sleep(5)
+	html = driver.page_source
+	soup = BS(html, 'lxml')
+	jobs = soup.find_all('div', {'class': 'rbox-opening-li'})
+
+	df = pd.DataFrame(columns=fields_needed)
+
+	for job in jobs:
+
+		try:
+			job_title = job.find('a').get_text().strip()
+
+			job_description = np.nan
+
+			job.find('span', {'class': 'rbox-opening-position-info'}).decompose()
+
+			loc_str = job.find('div', {'class': 'rbox-job-shortdesc'}).get_text().strip()
+
+			job_location = loc_str.replace('Location:', '')
+
+			job_type = np.nan  # job.find('span',{'class':'rbox-opening-position-info'}).get_text().strip()
+
+			years_of_experience = np.nan
+
+			job_department = np.nan
+
+			job_specific_url = job.find('a')['href']
+
+			df = df.append(pd.Series(data=[company_name,
+										   job_title,
+										   job_description,
+										   job_location,
+										   job_type,
+										   years_of_experience,
+										   job_department,
+										   job_specific_url,
+										   career_page_url,
+										   sector], index=fields_needed), ignore_index=True)
+
+		except Exception as error:
+
+			print(error)
+			print("<<<<<<<<<<<<<<<<<<<<< This company got an issue %s >>>>>>>>>>>>>>>>>>>>>>>" % career_page_url)
+
+	driver.close()
+
+	return df
+
+
+def hover(company_name, companies_details):
+	career_page_url = companies_details[company_name]['career_page_url']
+	sector = companies_details[company_name]['sector']
+
+	print(company_name)
+
+	df = pd.DataFrame(columns=fields_needed)
+
+	driver = webdriver.Chrome(executable_path=chrome_path)
+
+	driver.minimize_window()
+	driver.get(career_page_url)
+	time.sleep(10)
+	html = driver.page_source
+	soup = BS(html, 'lxml')
+
+	try:
+		jobs = soup.find('table').find('tbody').find_all('tr')
+	except:
+		jobs = []
+
+	base = 'https://hover.to/'
+	for job in jobs:
+		try:
+			job_title = job.find('a').get_text().strip()
+
+			job_description = np.nan
+
+			tds = job.find_all('td')
+
+			job_location = len(tds) > 2 and tds[2].get_text().strip() or ''
+
+			job_type = np.nan
+
+			years_of_experience = np.nan
+
+			href = job.find('a')['href']
+
+			job_department = len(tds) > 1 and tds[1].get_text().strip() or ''
+
+			job_specific_url = urljoin(base, href)
+
+			df = df.append(pd.Series(data=[company_name,
+										   job_title,
+										   job_description,
+										   job_location,
+										   job_type,
+										   years_of_experience,
+										   job_department,
+										   job_specific_url,
+										   career_page_url,
+										   sector], index=fields_needed), ignore_index=True)
+
+		except Exception as error:
+
+			print(error)
+
+			print("<<<<<<<<<<<<<<<<<<<<< This company got an issue %s >>>>>>>>>>>>>>>>>>>>>>>" % career_page_url)
+
+	driver.close()
+
+	return df
+
+
+def mroads(company_name, companies_details):
+	career_page_url = companies_details[company_name]['career_page_url']
+	sector = companies_details[company_name]['sector']
+
+	print(company_name)
+
+	df = pd.DataFrame(columns=fields_needed)
+
+	driver = webdriver.Chrome(executable_path=chrome_path)
+
+	driver.minimize_window()
+	driver.get(career_page_url)
+	time.sleep(5)
+	html = driver.page_source
+	soup = BS(html, 'lxml')
+	base = 'https://www.mroads.com/'
+
+	jobs = soup.find_all('li', {'class': 'Pagination__JobNavList__1xHhi'})
+
+	for job in jobs:
+		try:
+			job_title = job.select('div[class*="JobNavigation__JobParagraph2"]')[0].get_text().strip()
+
+			job_description = np.nan
+
+			job_location = job.select('div[class*="JobNavigation__JobParagraph1"]')[0].get_text().strip()
+
+			job_type = np.nan
+
+			years_of_experience = np.nan
+
+			job_department = np.nan
+
+			href = job.find('a')['href']
+			job_specific_url = urljoin(base, href)
+
+			df = df.append(pd.Series(data=[company_name,
+										   job_title,
+										   job_description,
+										   job_location,
+										   job_type,
+										   years_of_experience,
+										   job_department,
+										   job_specific_url,
+										   career_page_url,
+										   sector], index=fields_needed), ignore_index=True)
+
+		except Exception as error:
+
+			print(error)
+
+			print("<<<<<<<<<<<<<<<<<<<<< This company got an issue %s >>>>>>>>>>>>>>>>>>>>>>>" % career_page_url)
+
+	driver.close()
+	return df
+
+
 
 # Haptik_AI('Haptik','https://haptik.ai/careers/')
 # Gramener('Gramener','https://gramener.com/careers/#?show=all')

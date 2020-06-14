@@ -189,6 +189,8 @@ def lever_api(company_name,companies_details):
     career_page_url = companies_details[company_name]['career_page_url']
     sector =  companies_details[company_name]['sector']
 
+    print(company_name)
+
     count = 0
     df = pd.DataFrame(columns=fields_needed)
     job_description, job_type, years_of_experience, job_department, job_location = [''] * 5
@@ -224,6 +226,8 @@ def hire_withgoogle_api(company_name,companies_details):
 
     career_page_url = companies_details[company_name]['career_page_url']
     sector =  companies_details[company_name]['sector']
+
+    print(company_name)
 
     df = pd.DataFrame(columns=fields_needed)
     if 'withgoogle' in career_page_url:

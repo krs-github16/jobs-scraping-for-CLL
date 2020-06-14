@@ -16,9 +16,12 @@ keyword_processor = KeywordProcessor()
 
 from krs import niramai,locus, oneorigin, alphasense, sayint, casetext
 from manoj import zebra, episource, vicarious, uipath, angel_co
-from vinod import greenhouse_platform, workday_cognex, kla_tencor, hp, lever_api, hire_withgoogle_api
-from jagadeesh import Haptik_AI, Gramener, Boost_AI, Lumiq_FreshTeam, neurala, honeywell, IHSMarkit, x_ai
-from sitaram import abto,kritikal,atlas_elektronik,tobii,philips,tno,visenze,axis,vathos
+from vinod import greenhouse_platform, workday_cognex, kla_tencor, hp, \
+    lever_api, hire_withgoogle_api
+from jagadeesh import Haptik_AI, Gramener, Boost_AI, Lumiq_FreshTeam, neurala,\
+    honeywell, IHSMarkit, x_ai, geosys, unbxd, hover, mroads
+from sitaram import abto,kritikal,atlas_elektronik,tobii,philips,tno,visenze,\
+    axis,vathos
 
 
 def timeit(method):
@@ -34,7 +37,7 @@ def timeit(method):
     return timed
 
 
-executable_path=r'chromedriver_win32\chromedriver.exe'
+# executable_path=r'chromedriver_win32\chromedriver.exe'
 
 companies_md_url='https://github.com/colearninglounge/co-learning-lounge/blob/master/Technology/Artificial%20Intelligence/companies.md'
 
@@ -56,8 +59,6 @@ key_words_list=['deep learning', 'dl', 'machine learning', 'ml', 'nlp', 'natural
            'business intelligence analyst','python', 'data operations', 'financial analyst']
 
 keyword_processor.add_keywords_from_list(key_words_list)
-
-#companies_md_df=pd.read_excel(r'outputs/companies_md_df as on May 28, 2020 at 10 PM.xlsx',sheet_name='company career page urls')
 
 def companiesmd_to_dict(companies_md_url):
 
@@ -95,17 +96,6 @@ def in_key_words_list(item):
         return found, 'Yes'
     else:
         return "No"
-
-# def to_markdown(df,date):
-#     writer = MarkdownTableWriter()
-#     writer.table_name = "Jobs Info as on "+ date
-#     writer.headers = ['Index']+df.columns.to_list()
-#     writer.value_matrix=[]
-#     for row in df.itertuples():
-#         writer.value_matrix.append([*row])
-#
-#     writer.write_table()
-#     writer.dump(r'outputs/'+'jobs as on ' + date + '.md')
 
 if __name__=='__main__':
 
@@ -165,14 +155,16 @@ if __name__=='__main__':
                                  angel_co('Butterfly Network',companies_details),
                                  angel_co('arya.ai',companies_details),
                                  angel_co('pixuate',companies_details),
-                                 angel_co('couture.ai',companies_details)],1):
+                                 angel_co('couture.ai',companies_details),
+                                 geosys('geosys',companies_details),
+                                 unbxd('UNBXD',companies_details),
+                                 hover('hover',companies_details),
+                                 mroads('mroads',companies_details)],1):
 
         print(index,func.shape)
         frames.append(func)
 
     jobs_df = pd.concat(frames, axis=0, ignore_index=True)
-
-    #jobs_df = jobs_df.merge(companies_md_df[['Company Name','Market/Sector']],on='Company Name')
 
     jobs_df['in_key_words_list'] = jobs_df['Job Title'].apply(lambda s: in_key_words_list(str(s).strip()))
 
@@ -187,7 +179,5 @@ if __name__=='__main__':
     jobs_df = jobs_df[['Market/Sector','Company Name','Job Title','Job Location']].sort_values(by=['Market/Sector','Company Name'], ascending=True).reset_index(drop=True)
 
     jobs_df.to_excel(r'outputs//'+'filtered jobs in required format.xlsx', sheet_name=f'{date}',index=False)
-
-    # to_markdown_format(jobs_df,date)
 
     print('end')

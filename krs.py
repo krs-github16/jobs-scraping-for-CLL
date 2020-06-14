@@ -10,7 +10,8 @@ from urllib.request import urljoin
 from pytablewriter import MarkdownTableWriter
 
 #from run import executable_path
-executable_path=r'C:\Users\krajasekhara\PycharmProjects\CLL jobs scraping\chromedriver_win32\chromedriver.exe'
+
+chrome_path = r'C:\Users\krajasekhara\PycharmProjects\CLL jobs scraping\drivers\chromedriver_win32\chromedriver.exe'
 
 fields_needed=['Company Name',
                  'Job Title',
@@ -186,11 +187,11 @@ def alphasense(company_name,companies_details):
     career_page_url = companies_details[company_name]['career_page_url']
     sector =  companies_details[company_name]['sector']
 
-    driver = webdriver.Chrome(executable_path=executable_path)
+    driver = webdriver.Chrome(executable_path=chrome_path)
 
     driver.get(career_page_url)
 
-    # driver.maximize_window()
+    driver.minimize_window()
 
     # driver.execute_script("window.scrollTo(0, document.body.scrollHeight);var lenOfPage=document.body.scrollHeight;return lenOfPage;") #;var lenOfPage=document.body.scrollHeight;return lenOfPage;
 
