@@ -17,7 +17,7 @@ keyword_processor = KeywordProcessor()
 from krs import niramai,locus, oneorigin, alphasense, sayint, casetext
 from manoj import zebra, episource, vicarious, uipath, angel_co
 from vinod import greenhouse_platform, workday_cognex, kla_tencor, hp, \
-    lever_api, hire_withgoogle_api
+    lever_api, hire_withgoogle_api, apply_workable
 from jagadeesh import Haptik_AI, Gramener, Boost_AI, Lumiq_FreshTeam, neurala,\
     honeywell, IHSMarkit, x_ai, geosys, unbxd, hover, mroads
 from sitaram import abto,kritikal,atlas_elektronik,tobii,philips,tno,visenze,\
@@ -159,7 +159,11 @@ if __name__=='__main__':
                                  geosys('geosys',companies_details),
                                  unbxd('UNBXD',companies_details),
                                  hover('hover',companies_details),
-                                 mroads('mroads',companies_details)],1):
+                                 mroads('mroads',companies_details),
+                                 greenhouse_platform('GumGum', companies_details),
+                                 greenhouse_platform('iris automation', companies_details),
+                                 hire_withgoogle_api('imimtek',companies_details),
+                                 apply_workable('Pony.ai',companies_details)],1):
 
         print(index,func.shape)
         frames.append(func)

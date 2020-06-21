@@ -539,7 +539,7 @@ def geosys(company_name, companies_details):
 
 def unbxd(company_name, companies_details):
 
-	career_page_url = 'https://unbxd.com/careers/openings/'  # companies_details[company_name]['career_page_url']
+	career_page_url = companies_details[company_name]['career_page_url']   #'https://unbxd.com/careers/openings/'
 	sector = companies_details[company_name]['sector']
 
 	print(company_name)

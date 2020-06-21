@@ -258,3 +258,51 @@ def hire_withgoogle_api(company_name,companies_details):
     except Exception as error:
         print(error)
         print("<<<<<<<<<<<<<<<<<<<<< This company got an issue %s >>>>>>>>>>>>>>>>>>>>>>>" % career_page_url)
+
+def apply_workable(company_name,companies_details):
+
+    career_page_url = companies_details[company_name]['career_page_url']
+    sector =  companies_details[company_name]['sector']
+
+    print(company_name)
+
+    count = 0
+    job_description, job_type, years_of_experience, job_department, job_location = [''] * 5
+    domain = career_page_url.strip('/').split('/')[-1]
+    data = {"token": "", "query": "", "location": [], "department": [], "worktype": [], "remote": []}
+    page = 1
+    next_page = 1
+    df = pd.DataFrame(columns=fields_needed)
+    try:
+        while True:
+            if not next_page:
+                print("<<<<<<<<<<<<<<<<<<<<< Pagination completed %s >>>>>>>>>>>>>>>>>>>" % page)
+                break
+            if page > 1:
+                data.update({"token": str(next_page)})
+            response = requests.post('https://careers-page.workable.com/api/v2/accounts/%s/jobs' % domain,
+                                     data=data).json()
+            jobs_data = response.get('results', [])
+            print("<<<<<<<<<<<<<<<<<<<<<<< Page Number is %s >>>>>>>>>>>>>>>>>>>>" % page)
+            next_page = response.get('nextPage', '')
+            for job in jobs_data:
+                job_title = job.get('title', '').strip()
+                job_specific_url = career_page_url+'j/%s/' % str(job.get('shortcode', ''))
+                descp_data = job.get('description', '')
+                descp_data1 = job.get('requirements', '')
+                job_location = job.get('location', {}).get('country', '') + ', ' + \
+                job.get('location', {}).get('city', '') + ', ' + job.get('location', {}).get('region', '')
+                job_type = job.get('type', '')
+                job_department = ''.join(job.get('department', ''))
+                desc = descp_data + descp_data1
+                sel = Selector(text=desc)
+                job_desc = ''.join(sel.xpath('//text()').extract()).replace('                ', '').strip()
+                count += 1
+                df = df.append(pd.Series(data=[company_name, job_title, job_description, job_location,
+                   job_type, years_of_experience, job_department, job_specific_url,
+                   career_page_url,sector], index=fields_needed), ignore_index=True)
+            page += 1
+        return df
+    except Exception as error:
+        print(error)
+        print("<<<<<<<<<<<<<<<<<<<<< This company got an issue %s >>>>>>>>>>>>>>>>>>>>>>>" % career_page_url)
