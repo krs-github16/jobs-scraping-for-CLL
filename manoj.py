@@ -208,7 +208,7 @@ def angel_co(company_name, companies_details):
                     job_title = job.find('h4').text.strip()
                     job_specific_url = 'https://angel.co' + job.find('a').get('href')
                     job_location = job.find(class_='location_5ec2b').text
-                    job_description = job.find('p').text
+                    job_description = job.find(class_='descriptionSnippet_9f121').text
                     job_type = np.nan
                     years_of_experience = np.nan
                     job_department = job.find('h6').text

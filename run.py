@@ -52,11 +52,13 @@ fields_needed=['Company Name',
                  'Career Page URL',
                  'Market/Sector']
 
-key_words_list=['deep learning', 'dl', 'machine learning', 'ml', 'nlp', 'natural language processing', 'computer vision',
+key_words_list = ['deep learning', 'dl', 'machine learning', 'ml', 'nlp', 'natural language processing', 'computer vision',
            'cv', 'data scientist', 'ds', 'business analyst', 'data engineer', 'research engineer', 'data visualization',
            'data analyst', 'database administrator', 'database admin','data architect', 'statistician', 'data and analytics',
            'chatbot', 'conversational AI', 'artificial intelligence', 'AI', 'quantitative analyst', 'data warehouse',
-           'business intelligence analyst','python', 'data operations', 'financial analyst']
+           'business intelligence analyst','python', 'data operations', 'financial analyst','data science', 'data transformation',
+          'data engineering','data specialist', 'data strategist', 'data management' , 'data analist', 'data annotator', 'data governance',
+            'data infrastructure','datascience','natural language understanding', 'language modeling','imaging scientist']
 
 keyword_processor.add_keywords_from_list(key_words_list)
 
@@ -105,7 +107,8 @@ if __name__=='__main__':
     companies_details = companiesmd_to_dict(companies_md_url)
     print(companies_details)
 
-    for index,func in enumerate([locus('locus.sh',companies_details),
+    for index,func in enumerate([
+                                 locus('locus.sh',companies_details),
                                  niramai('niramai',companies_details),
                                  oneorigin('oneorigin',companies_details),
                                  alphasense('alphaSense',companies_details),
@@ -163,7 +166,8 @@ if __name__=='__main__':
                                  greenhouse_platform('GumGum', companies_details),
                                  greenhouse_platform('iris automation', companies_details),
                                  hire_withgoogle_api('imimtek',companies_details),
-                                 apply_workable('Pony.ai',companies_details)],1):
+                                 apply_workable('Pony.ai',companies_details)
+                                 ],1):
 
         print(index,func.shape)
         frames.append(func)
@@ -174,7 +178,7 @@ if __name__=='__main__':
 
     jobs_df.to_excel(r'outputs//'+'all jobs.xlsx', sheet_name=f'{date}',index=False)
 
-    jobs_df = jobs_df[jobs_df['in_key_words_list' ]!='No'].drop(columns=['in_key_words_list']).reset_index()
+    jobs_df = jobs_df[jobs_df['in_key_words_list']!='No'].drop(columns=['in_key_words_list']).reset_index()
 
     jobs_df['Company Name'] = "[" + jobs_df['Company Name'].astype(str) + "]" + "(" + jobs_df['Career Page URL'].astype(str) + ")"
 

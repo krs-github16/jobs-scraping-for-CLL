@@ -338,16 +338,22 @@ def visenze(company_name, companies_details):
         df = pd.DataFrame(columns=fields_needed)
         for itemAll in soup.findAll('div', {'class': 'container'}):
             for item in itemAll.findAll('div', {'class': ['col-12', 'aos-init', 'aos-animate']}):
-                job_title = item.find('h3')
+                job_title_raw = item.find('h3')
+                try:
+                    job_title= item.find('h3').get_text()
+                    #print(job_title)
+                except AttributeError as e:
+                    #print(repr(e))
+                    continue
                 for z in item.findAll('a'):
                     job_specific_url = z.get('href')
-                if job_title != None:
+                if job_title_raw!= None:
                     i = item.find('p')
                     s = []
                     for a in i.findAll('span'):
                         s.append([a.text])
-                    job_department = s[0]
-                    job_location = s[1]
+                    job_department = s[0][0]
+                    job_location = s[1][0]
                     job_description = np.nan
                     job_type = np.nan
                     years_of_experience = np.nan
