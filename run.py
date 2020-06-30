@@ -15,13 +15,13 @@ keyword_processor = KeywordProcessor()
 #from pytablewriter import MarkdownTableWriter
 
 from krs import niramai,locus, oneorigin, alphasense, sayint, casetext
-from manoj import zebra, episource, vicarious, uipath, angel_co
+from manoj import zebra, episource, vicarious, uipath, angel_co, insilico, loginextsolutions, appen
 from vinod import greenhouse_platform, workday_cognex, kla_tencor, hp, \
     lever_api, hire_withgoogle_api, apply_workable
 from jagadeesh import Haptik_AI, Gramener, Boost_AI, Lumiq_FreshTeam, neurala,\
-    honeywell, IHSMarkit, x_ai, geosys, unbxd, hover, mroads
+    honeywell, IHSMarkit, x_ai, geosys, unbxd, hover, mroads, HHMI_Janelia, Kaggle
 from sitaram import abto,kritikal,atlas_elektronik,tobii,philips,tno,visenze,\
-    axis,vathos
+    axis,vathos, Artivatic, Pleiades, imageMetrics,sentiosports, L3Harris
 
 
 def timeit(method):
@@ -107,7 +107,16 @@ if __name__=='__main__':
     companies_details = companiesmd_to_dict(companies_md_url)
     print(companies_details)
 
-    for index,func in enumerate([
+    for index,func in enumerate([HHMI_Janelia('HHMI',companies_details),
+                                 Kaggle('Kaggle', companies_details),
+                                 insilico('inSilico medicine', companies_details),
+                                 loginextsolutions('logiNext', companies_details),
+                                 appen('figure eight', companies_details),
+                                Artivatic("artivatic.ai", companies_details),
+                                Pleiades("pleiades tech", companies_details),
+                                imageMetrics("Image Metrics", companies_details),
+                                sentiosports("SentioSports", companies_details),
+                                L3Harris("exelis vis", companies_details),
                                  locus('locus.sh',companies_details),
                                  niramai('niramai',companies_details),
                                  oneorigin('oneorigin',companies_details),
@@ -167,7 +176,7 @@ if __name__=='__main__':
                                  greenhouse_platform('iris automation', companies_details),
                                  hire_withgoogle_api('imimtek',companies_details),
                                  apply_workable('Pony.ai',companies_details)
-                                 ],1):
+                                ],1):
 
         print(index,func.shape)
         frames.append(func)

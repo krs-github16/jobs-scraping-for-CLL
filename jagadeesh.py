@@ -719,6 +719,116 @@ def mroads(company_name, companies_details):
 	return df
 
 
+def HHMI_Janelia(company_name, companies_details):
+	career_page_url = 'https://hhmi-openhire.silkroad.com/epostings/index.cfm?fuseaction=app.allpositions&company_id=16908&version=1'  # companies_details[company_name]['career_page_url']
+	sector = companies_details[company_name]['sector']
+
+	print(company_name)
+
+	df = pd.DataFrame(columns=fields_needed)
+
+	html = requests.get(career_page_url).text
+	soup = BS(html, 'lxml')
+	divs = soup.find_all('div', {'class': 'cssAllJobListPosition'})
+	base = 'https://hhmi-openhire.silkroad.com/'
+
+	for div in divs:
+		try:
+			job_title = div.find('a').get_text().strip()
+
+			job_description = np.nan
+
+			href = div.find('a')['href']
+			job_specific_url = urljoin(base, href)
+
+			div.find('a').decompose()
+			job_location = div.get_text().strip()
+
+			job_type = np.nan
+
+			years_of_experience = np.nan
+
+			job_department = np.nan
+
+			df = df.append(pd.Series(data=[company_name,
+										   job_title,
+										   job_description,
+										   job_location,
+										   job_type,
+										   years_of_experience,
+										   job_department,
+										   job_specific_url,
+										   career_page_url,
+										   sector], index=fields_needed), ignore_index=True)
+
+		except Exception as error:
+
+			print(error)
+
+			print("<<<<<<<<<<<<<<<<<<<<< This company got an issue %s >>>>>>>>>>>>>>>>>>>>>>>" % career_page_url)
+
+	return df
+
+
+def Kaggle(company_name, companies_details):
+	career_page_url = companies_details[company_name]['career_page_url']
+	sector = companies_details[company_name]['sector']
+
+	print(company_name)
+
+	df = pd.DataFrame(columns=fields_needed)
+
+	driver = webdriver.Chrome(executable_path=chrome_path)
+	driver.minimize_window()
+	driver.get(career_page_url)
+	time.sleep(10)
+	html = driver.page_source
+	soup = BS(html, 'lxml')
+	base = 'https://www.kaggle.com/'
+	jobs = soup.find_all('a', {'class': 'jobs-list-job'})
+
+	for job in jobs:
+		try:
+			job_title = job.find('div', {'class': 'jobs-list-job__title-contents'}).get_text().strip()
+
+			job_description = np.nan
+
+			job_type = np.nan
+
+			years_of_experience = np.nan
+
+			job_department = np.nan
+
+			job_location = job.find('span', {'class': 'jobs-list-job__location-text'}).get_text().strip()
+
+			href = job['href']
+			job_specific_url = urljoin(base, href)
+
+			df = df.append(pd.Series(data=[company_name,
+										   job_title,
+										   job_description,
+										   job_location,
+										   job_type,
+										   years_of_experience,
+										   job_department,
+										   job_specific_url,
+										   career_page_url,
+										   sector], index=fields_needed), ignore_index=True)
+
+		except Exception as error:
+
+			print(error)
+
+			print("<<<<<<<<<<<<<<<<<<<<< This company got an issue %s >>>>>>>>>>>>>>>>>>>>>>>" % career_page_url)
+
+
+		except:
+			pass
+
+	driver.close()
+	return df
+
+
 
 # Haptik_AI('Haptik','https://haptik.ai/careers/')
 # Gramener('Gramener','https://gramener.com/careers/#?show=all')

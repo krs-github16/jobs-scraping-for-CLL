@@ -445,6 +445,188 @@ def vathos(company_name, companies_details):
         print("<<<<<<<<<<<<<<<<<<<<< This company got an issue %s >>>>>>>>>>>>>>>>>>>>>>>" % career_page_url)
     return df
 
+
+def Artivatic(company_name, companies_details):
+    career_page_url = "https://new.artivatic.ai/blocks/jobs/#"  # companies_details[company_name]['career_page_url']
+    sector = companies_details[company_name]['sector']
+
+    print(company_name)
+    try:
+        html = requests.get(career_page_url).text
+        soup = BS(html, 'lxml')
+        df = pd.DataFrame(columns=fields_needed)
+        for i in soup.findAll('div', {'class': 'wp-block-getwid-banner__caption-wrapper'}):
+            for item in i.findAll('span', {'class': 'wp-block-getwid-banner__title'}):
+                job_title = item.text
+            for des in i.findAll('p', {'class': "wp-block-getwid-banner__text"}):
+                job_description = des
+            job_location = np.nan
+            job_type = np.nan
+            years_of_experience = np.nan
+            job_department = np.nan
+            job_specific_url = career_page_url
+            df = df.append(pd.Series(data=[company_name,
+                                           job_title,
+                                           job_description,
+                                           job_location,
+                                           job_type,
+                                           years_of_experience,
+                                           job_department,
+                                           job_specific_url,
+                                           career_page_url,
+                                           sector], index=fields_needed), ignore_index=True)
+    #         df =df.drop(df.index[0])
+    #         df = df.iloc[:-1]
+    except Exception as error:
+        print(error)
+        print("<<<<<<<<<<<<<<<<<<<<< This company got an issue %s >>>>>>>>>>>>>>>>>>>>>>>" % career_page_url)
+    return df
+
+
+def Pleiades(company_name, companies_details):
+    career_page_url = companies_details[company_name]['career_page_url']
+    sector = companies_details[company_name]['sector']
+
+    print(company_name)
+
+    try:
+        html = requests.get(career_page_url).text
+        soup = BS(html, 'lxml')
+        df = pd.DataFrame(columns=fields_needed)
+        for item in soup.find_all('div', class_='inner'):
+            if len(item["class"]) != 1:
+                continue
+            for h in item.findAll('h3'):
+                job_title = h.text
+            for a in item.findAll('a'):
+                job_specific_url = urljoin(career_page_url, a.get('href'))
+            years_of_experience = np.nan
+            job_description = np.nan
+            job_location = np.nan
+            job_type = np.nan
+            job_department = np.nan
+            df = df.append(pd.Series(data=[company_name,
+                                           job_title,
+                                           job_description,
+                                           job_location,
+                                           job_type,
+                                           years_of_experience,
+                                           job_department,
+                                           job_specific_url,
+                                           career_page_url,
+                                           sector], index=fields_needed), ignore_index=True)
+    except Exception as error:
+        print(error)
+        print("<<<<<<<<<<<<<<<<<<<<< This company got an issue %s >>>>>>>>>>>>>>>>>>>>>>>" % career_page_url)
+    return df
+
+
+def imageMetrics(company_name, companies_details):
+    career_page_url = companies_details[company_name]['career_page_url']
+    sector = companies_details[company_name]['sector']
+
+    print(company_name)
+
+    try:
+        html = requests.get(career_page_url).text
+        soup = BS(html, 'lxml')
+        df = pd.DataFrame(columns=fields_needed)
+        for item in soup.findAll('div', {'class': 'careers-box'}):
+            job_title = item.h5.text
+            job_description = item.p.text
+            job_specific_url = item.a['href']
+            job_location = np.nan
+            job_type = np.nan
+            years_of_experience = np.nan
+            job_department = np.nan
+            df = df.append(pd.Series(data=[company_name,
+                                       job_title,
+                                       job_description,
+                                       job_location,
+                                       job_type,
+                                       years_of_experience,
+                                       job_department,
+                                       job_specific_url,
+                                       career_page_url,
+                                       sector], index=fields_needed), ignore_index=True)
+    except Exception as error:
+        print(error)
+        print("<<<<<<<<<<<<<<<<<<<<< This company got an issue %s >>>>>>>>>>>>>>>>>>>>>>>" % career_page_url)
+    return df
+
+
+def sentiosports(company_name, companies_details):
+    career_page_url = companies_details[company_name]['career_page_url']
+    sector = companies_details[company_name]['sector']
+
+    print(company_name)
+
+    try:
+        html = requests.get(career_page_url).text
+        soup = BS(html, 'lxml')
+        df = pd.DataFrame(columns=fields_needed)
+        for item in soup.findAll('div', {'class': 'section-table_wrap'}):
+            job_title = item.h2.text
+            job_description_raw = item.p.text
+            job_description = job_description_raw.replace('\n', '')
+            job_location = np.nan
+            job_type = np.nan
+            years_of_experience = np.nan
+            job_department = np.nan
+            job_specific_url = career_page_url
+            df = df.append(pd.Series(data=[company_name,
+                                           job_title,
+                                           job_description,
+                                           job_location,
+                                           job_type,
+                                           years_of_experience,
+                                           job_department,
+                                           job_specific_url,
+                                           career_page_url,
+                                           sector], index=fields_needed), ignore_index=True)
+    except Exception as error:
+        print(error)
+        print("<<<<<<<<<<<<<<<<<<<<< This company got an issue %s >>>>>>>>>>>>>>>>>>>>>>>" % career_page_url)
+
+    return df
+
+
+def L3Harris(company_name, companies_details):
+    career_page_url = companies_details[company_name]['career_page_url']
+    sector = companies_details[company_name]['sector']
+
+    print(company_name)
+
+    try:
+        html = requests.get(career_page_url).text
+        soup = BS(html, 'lxml')
+        df = pd.DataFrame(columns=fields_needed)
+        for item in soup.findAll('div', {'class': 'edn_rightSide'}):
+            job_location = item.find('a').text
+            for title in item.findAll('h2', {'class': 'edn_articleTitle'}):
+                job_title_raw = title.text
+                job_title = job_title_raw.replace('\n', '')
+                job_specific_url = title.a['href']
+            job_description = np.nan
+            job_type = np.nan
+            years_of_experience = np.nan
+            job_department = np.nan
+            df = df.append(pd.Series(data=[company_name,
+                                       job_title,
+                                       job_description,
+                                       job_location,
+                                       job_type,
+                                       years_of_experience,
+                                       job_department,
+                                       job_specific_url,
+                                       career_page_url,
+                                       sector], index=fields_needed), ignore_index=True)
+    except Exception as error:
+        print(error)
+        print("<<<<<<<<<<<<<<<<<<<<< This company got an issue %s >>>>>>>>>>>>>>>>>>>>>>>" % career_page_url)
+    return df
+
+
 #abto('abto software',companies_details)
 #kritikal('KritiKal Solutions',companies_details)
 #atlas_elektronik('atlas elektronik',companies_details)

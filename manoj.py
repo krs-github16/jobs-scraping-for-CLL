@@ -230,6 +230,132 @@ def angel_co(company_name, companies_details):
     driver.close()
     return df
 
+
+def insilico(company_name, companies_details):
+    career_page_url = companies_details[company_name]['career_page_url']
+    sector = companies_details[company_name]['sector']
+
+    print(company_name)
+    count = 0
+    df = pd.DataFrame(columns = fields_needed)
+    for job in BS(requests.get(career_page_url,'lxml').text).find_all(class_='t649__col'):
+        try:
+            count += 1
+
+            job_title = job.find(class_='t649__title').text.strip()
+            job_specific_url = np.nan
+            job_type = np.nan
+            years_of_experience = np.nan
+            job_description = job.find(class_='t649__text').text
+            job_location = np.nan
+            if 'Location' in job.find(class_='t649__text').find('strong').text:
+                job_location = job.find(class_='t649__text').find('strong').next_sibling
+            job_department = np.nan
+
+            df = df.append(pd.Series(data=[company_name,
+                                           job_title,
+                                           job_description,
+                                           job_location,
+                                           job_type,
+                                           years_of_experience,
+                                           job_department,
+                                           job_specific_url,
+                                           career_page_url,
+                                           sector], index=fields_needed), ignore_index=True)
+        except Exception as error:
+
+            print(error)
+
+            print("<<<<<<<<<<<<<<<<<<<<< This company got an issue %s >>>>>>>>>>>>>>>>>>>>>>>" % career_page_url)
+
+    return df
+
+
+def loginextsolutions(company_name, companies_details):
+    career_page_url = 'https://www.loginextsolutions.com/job-roles'  # companies_details[company_name]['career_page_url']
+    sector = companies_details[company_name]['sector']
+
+    print(company_name)
+    count = 0
+    df = pd.DataFrame(columns = fields_needed)
+    response = BS(requests.get(career_page_url,'lxml').text)
+    for domain in response.find_all(class_='panel'):
+        for job in domain.find(class_='panel-contain').find_all('a', target="_blank"):
+            try:
+                count += 1
+                job_title = job.find(class_='title').text.strip()
+                job_specific_url = job.get('href')
+                job_location = job.find(class_='position-location').text.strip()
+
+                job_description = job.find(class_='disc').text.strip()
+                job_type = np.nan
+                years_of_experience = np.nan
+                job_department = domain.find(class_='position-name').text.strip()
+
+                df = df.append(pd.Series(data=[company_name,
+                                               job_title,
+                                               job_description,
+                                               job_location,
+                                               job_type,
+                                               years_of_experience,
+                                               job_department,
+                                               job_specific_url,
+                                               career_page_url,
+                                               sector], index=fields_needed), ignore_index=True)
+            except Exception as error:
+
+                print(error)
+
+                print("<<<<<<<<<<<<<<<<<<<<< This company got an issue %s >>>>>>>>>>>>>>>>>>>>>>>" % career_page_url)
+
+    return df
+
+
+def appen(company_name, companies_details):
+    career_page_url = 'https://talent-appen.icims.com/jobs/search?pr=0&in_iframe=1'  # companies_details[company_name]['career_page_url']
+    sector = companies_details[company_name]['sector']
+
+    print(company_name)
+
+    url = 'https://talent-appen.icims.com/jobs/search?pr={}&in_iframe=1'
+    count = 0
+    page = 0
+    job_table = BS(requests.get(url.format(str(page))).text, 'lxml').find(class_='iCIMS_JobsTable')
+    count = 0
+    df = pd.DataFrame(columns=fields_needed)
+    while True:
+        for job in job_table.find_all(class_='row'):
+            try:
+                count += 1
+                job_title = job.find('a').find_all('span')[1].text.strip()
+                job_description = job.find(class_='description').text.strip()
+                job_specific_url = job.find('a').get('href')
+                job_location = np.nan
+                if 'Locations' in job.find('span').text:
+                    job_location = job.find('span').find_next('span').text.strip()
+
+                job_type = np.nan
+                years_of_experience = np.nan
+                job_department = np.nan
+
+                df = df.append(pd.Series(data=[company_name,
+                                               job_title,
+                                               job_description,
+                                               job_location,
+                                               job_type,
+                                               years_of_experience,
+                                               job_department,
+                                               job_specific_url,
+                                               career_page_url,
+                                               sector], index=fields_needed), ignore_index=True)
+            except Exception as e:
+                print(e)
+        page += 1
+        job_table = BS(requests.get(url.format(str(page))).text, 'lxml').find(class_='iCIMS_JobsTable')
+        if not job_table:
+            break
+    return df
+
 #  zebra('Zebra Medical Vision','https://www.zebra-med.com/careers'),
 #  episource('Episource LLC','https://www.episource.com/careers/'),
 #  vicarious('Vicarious','https://www.vicarious.com/careers/'),
