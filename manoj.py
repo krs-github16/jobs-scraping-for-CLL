@@ -238,12 +238,12 @@ def insilico(company_name, companies_details):
     print(company_name)
     count = 0
     df = pd.DataFrame(columns = fields_needed)
-    for job in BS(requests.get(career_page_url,'lxml').text).find_all(class_='t649__col'):
+    for job in BS(requests.get(career_page_url,"lxml").text).find_all(class_='t649__col'):
         try:
             count += 1
 
             job_title = job.find(class_='t649__title').text.strip()
-            job_specific_url = np.nan
+            job_specific_url = career_page_url
             job_type = np.nan
             years_of_experience = np.nan
             job_description = job.find(class_='t649__text').text
@@ -278,7 +278,7 @@ def loginextsolutions(company_name, companies_details):
     print(company_name)
     count = 0
     df = pd.DataFrame(columns = fields_needed)
-    response = BS(requests.get(career_page_url,'lxml').text)
+    response = BS(requests.get(career_page_url,"lxml").text)
     for domain in response.find_all(class_='panel'):
         for job in domain.find(class_='panel-contain').find_all('a', target="_blank"):
             try:

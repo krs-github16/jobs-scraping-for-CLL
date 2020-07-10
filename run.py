@@ -10,7 +10,6 @@ from bs4 import BeautifulSoup as BS
 from urllib.request import urljoin
 
 from flashtext import KeywordProcessor
-keyword_processor = KeywordProcessor()
 
 #from pytablewriter import MarkdownTableWriter
 
@@ -52,15 +51,13 @@ fields_needed=['Company Name',
                  'Career Page URL',
                  'Market/Sector']
 
-key_words_list = ['deep learning', 'dl', 'machine learning', 'ml', 'nlp', 'natural language processing', 'computer vision',
+positive_key_words_list = ['deep learning', 'dl', 'machine learning', 'ml', 'nlp', 'natural language processing', 'computer vision',
            'cv', 'data scientist', 'ds', 'business analyst', 'data engineer', 'research engineer', 'data visualization',
-           'data analyst', 'database administrator', 'database admin','data architect', 'statistician', 'data and analytics',
-           'chatbot', 'conversational AI', 'artificial intelligence', 'AI', 'quantitative analyst', 'data warehouse',
-           'business intelligence analyst','python', 'data operations', 'financial analyst','data science', 'data transformation',
-          'data engineering','data specialist', 'data strategist', 'data management' , 'data analist', 'data annotator', 'data governance',
-            'data infrastructure','datascience','natural language understanding', 'language modeling','imaging scientist']
+           'data analyst',  'database admin','data architect', 'statistician', 'data and analytics',
+           'chatbot', 'conversational AI', 'artificial intelligence', 'AI','business intelligence analyst','python',  'data science',
+          'data engineering',  'data analist', 'data infrastructure','datascience','natural language understanding', 'language modeling','imaging scientist']
 
-keyword_processor.add_keywords_from_list(key_words_list)
+negative_key_words_list = ['front end','bioinformatics','front-end']
 
 def companiesmd_to_dict(companies_md_url):
 
@@ -90,7 +87,11 @@ def companiesmd_to_dict(companies_md_url):
 
     return dictionary
 
-def in_key_words_list(item):
+def in_key_words_list(item,key_words_list):
+
+    keyword_processor = KeywordProcessor()
+
+    keyword_processor.add_keywords_from_list(key_words_list)
 
     found = keyword_processor.extract_keywords(item)
 
@@ -112,11 +113,11 @@ if __name__=='__main__':
                                  insilico('inSilico medicine', companies_details),
                                  loginextsolutions('logiNext', companies_details),
                                  appen('figure eight', companies_details),
-                                Artivatic("artivatic.ai", companies_details),
-                                Pleiades("pleiades tech", companies_details),
-                                imageMetrics("Image Metrics", companies_details),
-                                sentiosports("SentioSports", companies_details),
-                                L3Harris("exelis vis", companies_details),
+                                 Artivatic("artivatic.ai", companies_details),
+                                 Pleiades("pleiades tech", companies_details),
+                                 imageMetrics("Image Metrics", companies_details),
+                                 sentiosports("SentioSports", companies_details),
+                                 L3Harris("exelis vis", companies_details),
                                  locus('locus.sh',companies_details),
                                  niramai('niramai',companies_details),
                                  oneorigin('oneorigin',companies_details),
@@ -175,19 +176,22 @@ if __name__=='__main__':
                                  greenhouse_platform('GumGum', companies_details),
                                  greenhouse_platform('iris automation', companies_details),
                                  hire_withgoogle_api('imimtek',companies_details),
-                                 apply_workable('Pony.ai',companies_details)
-                                ],1):
+                                 apply_workable('Pony.ai',companies_details)],1):
 
         print(index,func.shape)
         frames.append(func)
 
     jobs_df = pd.concat(frames, axis=0, ignore_index=True)
 
-    jobs_df['in_key_words_list'] = jobs_df['Job Title'].apply(lambda s: in_key_words_list(str(s).strip()))
+    jobs_df['in_key_words_list'] = jobs_df['Job Title'].apply(lambda s: in_key_words_list(str(s).strip(), positive_key_words_list))
+
+    jobs_df['out_key_words_list'] = jobs_df['Job Title'].apply(lambda s: in_key_words_list(str(s).strip(), negative_key_words_list))
+
+    jobs_df['job title length'] = jobs_df['Job Title'].apply(len)
 
     jobs_df.to_excel(r'outputs//'+'all jobs.xlsx', sheet_name=f'{date}',index=False)
 
-    jobs_df = jobs_df[jobs_df['in_key_words_list']!='No'].drop(columns=['in_key_words_list']).reset_index()
+    jobs_df = jobs_df[(jobs_df['in_key_words_list']!='No') & (jobs_df['out_key_words_list']=='No') & (jobs_df['job title length']<=65)].drop(columns=['in_key_words_list','out_key_words_list','job title length']).reset_index()
 
     jobs_df['Company Name'] = "[" + jobs_df['Company Name'].astype(str) + "]" + "(" + jobs_df['Career Page URL'].astype(str) + ")"
 

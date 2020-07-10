@@ -40,7 +40,7 @@ for domain_name, group_by_domain in grouped_by_domain:
 
 jobs_content = jobs_content + "\n \n"
 footer = """#### Contributors
-[Rajasekhara Reddy Kaluri](https://www.linkedin.com/in/raja-sekhara-reddy-kaluri-a8b7aa8b),[Vinod Kumar Mukku](https://www.linkedin.com/in/vinod-kumar-mukku-76a124121), [Manoj Biroj](https://www.linkedin.com/in/manoj-biroj), [Jagadeesh Chandra Kambampati](https://www.linkedin.com/in/jagadeesh-chandra-kambampati-99763a7a), [Sita Rama Rao](https://www.linkedin.com/in/venuturumilli-s-v-s-sita-rama-rao/) has worked on this project.
+[Rajasekhara Reddy Kaluri](https://www.linkedin.com/in/raja-sekhara-reddy-kaluri-a8b7aa8b),[Vinod Kumar Mukku](https://www.linkedin.com/in/vinod-kumar-mukku-76a124121), [Manoj Biroj](https://www.linkedin.com/in/manoj-biroj), [Jagadeesh Chandra Kambampati](https://www.linkedin.com/in/jagadeesh-chandra-kambampati-99763a7a), [Sita Rama Rao](https://www.linkedin.com/in/venuturumilli-s-v-s-sita-rama-rao/) have contributed to this project.
 
 #### Want to contribute?  <br>
 [Check this](jobs.md#support-us-) """
