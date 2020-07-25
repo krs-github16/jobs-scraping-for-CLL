@@ -720,7 +720,7 @@ def mroads(company_name, companies_details):
 
 
 def HHMI_Janelia(company_name, companies_details):
-	career_page_url = 'https://hhmi-openhire.silkroad.com/epostings/index.cfm?fuseaction=app.allpositions&company_id=16908&version=1'  # companies_details[company_name]['career_page_url']
+	career_page_url = companies_details[company_name]['career_page_url']
 	sector = companies_details[company_name]['sector']
 
 	print(company_name)
@@ -826,6 +826,271 @@ def Kaggle(company_name, companies_details):
 			pass
 
 	driver.close()
+	return df
+
+
+def philips(company_name, companies_details):
+	career_page_url = companies_details[company_name]['career_page_url']
+	sector = companies_details[company_name]['sector']
+
+	print(company_name)
+
+	df = pd.DataFrame(columns=fields_needed)
+
+	base = 'https://www.careers.philips.com/professional/apac/en/job/'
+	link_format = 'https://www.careers.philips.com/professional/apac/en/search-results?keywords=?from={}&s=1'
+	count = 0
+
+	for i in range(0, 100, 50):
+		try:
+			link = link_format.format(i)
+			res = requests.request('GET', link)
+			html = res.text
+			soup = BS(html, 'lxml')
+
+			js = str(soup.find('script'))
+			reg = re.search(r'"jobs":(.*),"aggregations"', js)
+			data = reg.groups()[0]
+			jobs = json.loads(data)
+			for job in jobs:
+				try:
+
+					job_title = job['title']
+					job_description = np.nan
+
+					job_location = job['cityStateCountry']
+					job_type = np.nan
+					years_of_experience = np.nan
+					job_department = job['category']
+					job_seq = job['jobSeqNo']
+					job_specific_url = base + job_seq
+
+					df = df.append(pd.Series(data=[company_name,
+												   job_title,
+												   job_description,
+												   job_location,
+												   job_type,
+												   years_of_experience,
+												   job_department,
+												   job_specific_url,
+												   career_page_url,
+												   sector], index=fields_needed), ignore_index=True)
+					count += 1
+
+				except:
+					pass
+
+		except:
+			pass
+
+	return df
+
+
+def GE_Global(company_name, companies_details):
+	career_page_url = companies_details[company_name]['career_page_url']
+	sector = companies_details[company_name]['sector']
+
+	print(company_name)
+
+	df = pd.DataFrame(columns=fields_needed)
+
+	base = 'https://jobs.gecareers.com/global/en/job/'
+	link_format = 'https://jobs.gecareers.com/global/en/search-results?from={}&s=1'
+	count = 0
+
+	for i in range(0, 1000, 20):
+		try:
+			link = link_format.format(i)
+			res = requests.request('GET', link)
+			html = res.text
+			soup = BS(html, 'lxml')
+
+			js = str(soup.find('script'))
+			reg = re.search(r'"jobs":(.*),"aggregations"', js)
+			data = reg.groups()[0]
+			jobs = json.loads(data)
+			for job in jobs:
+				try:
+
+					job_title = job['title']
+					job_description = np.nan
+
+					job_location = job['cityStateCountry']
+
+					job_type = np.nan
+					years_of_experience = np.nan
+
+					job_department = job['category']
+
+					job_seq = job['jobSeqNo']
+					job_specific_url = base + job_seq
+
+					df = df.append(pd.Series(data=[company_name,
+												   job_title,
+												   job_description,
+												   job_location,
+												   job_type,
+												   years_of_experience,
+												   job_department,
+												   job_specific_url,
+												   career_page_url,
+												   sector], index=fields_needed), ignore_index=True)
+					count += 1
+
+				except:
+					pass
+
+		except:
+			pass
+
+	return df
+
+
+def Cella_Vision(company_name, companies_details):
+	career_page_url = companies_details[company_name]['career_page_url']
+	sector = companies_details[company_name]['sector']
+
+	print(company_name)
+
+	df = pd.DataFrame(columns=fields_needed)
+
+	html = requests.get(career_page_url).text
+	soup = BS(html, 'lxml')
+	jobs = soup.find('div', {'class': 'job-listing-container'}).find_all('li')
+
+	base = 'https://career.cellavision.com/'
+
+	count = 0
+	for job in jobs:
+		try:
+			job_title = job.find('span').get_text().strip()
+
+			job_description = np.nan
+
+			job_location = np.nan
+
+			job_type = np.nan
+			years_of_experience = np.nan
+
+			job_department = np.nan
+
+			href = job.find('a')['href']
+			job_specific_url = urljoin(base, href)
+
+			df = df.append(pd.Series(data=[company_name,
+										   job_title,
+										   job_description,
+										   job_location,
+										   job_type,
+										   years_of_experience,
+										   job_department,
+										   job_specific_url,
+										   career_page_url,
+										   sector], index=fields_needed), ignore_index=True)
+			count += 1
+
+		except:
+			pass
+
+	return df
+
+
+def BitRefine(company_name, companies_details):
+	career_page_url = companies_details[company_name]['career_page_url']
+	sector = companies_details[company_name]['sector']
+
+	print(company_name)
+
+	df = pd.DataFrame(columns=fields_needed)
+
+	headers = {
+		"user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.116 Safari/537.36 Edg/83.0.478.64"}
+	html = requests.get(career_page_url, headers=headers).text
+	soup = BS(html, 'lxml')
+	jobs = soup.find('div', {'class': 'moduletable'}).find_all('div', {'class': 'row-fluid'})
+
+	base = 'https://bitrefine.group/'
+
+	count = 0
+	for job in jobs:
+		try:
+			job_title = job.find('h2').find('a').get_text().strip()
+
+			job_description = np.nan
+
+			job_location = np.nan
+
+			job_type = np.nan
+			years_of_experience = np.nan
+
+			job_department = np.nan
+
+			href = job.find('h2').find('a')['href']
+			job_specific_url = urljoin(base, href)
+
+			df = df.append(pd.Series(data=[company_name,
+										   job_title,
+										   job_description,
+										   job_location,
+										   job_type,
+										   years_of_experience,
+										   job_department,
+										   job_specific_url,
+										   career_page_url,
+										   sector], index=fields_needed), ignore_index=True)
+
+			count += 1
+
+		except:
+			pass
+
+	return df
+
+
+def orbital_insight(company_name, companies_details):
+	career_page_url = companies_details[company_name]['career_page_url']
+	sector = companies_details[company_name]['sector']
+
+	print(company_name)
+
+	df = pd.DataFrame(columns=fields_needed)
+
+	html = requests.get(career_page_url).text
+	soup = BS(html, 'lxml')
+	jobs = soup.find_all('div', {'class': 'card'})
+
+	count = 0
+	for job in jobs:
+		try:
+			job_title = job.find('h3').find('a').get_text().strip()
+
+			job_description = np.nan
+
+			job_location = job.find('h5').get_text().strip()
+
+			job_type = np.nan
+
+			years_of_experience = np.nan
+
+			job_department = job.find('h5').findNext('p').get_text().strip()
+
+			job_specific_url = job.find('h3').find('a')['href']
+
+			df = df.append(pd.Series(data=[company_name,
+										   job_title,
+										   job_description,
+										   job_location,
+										   job_type,
+										   years_of_experience,
+										   job_department,
+										   job_specific_url,
+										   career_page_url,
+										   sector], index=fields_needed), ignore_index=True)
+			count += 1
+
+		except:
+			pass
+
 	return df
 
 

@@ -447,7 +447,7 @@ def vathos(company_name, companies_details):
 
 
 def Artivatic(company_name, companies_details):
-    career_page_url = "https://new.artivatic.ai/blocks/jobs/#"  # companies_details[company_name]['career_page_url']
+    career_page_url = companies_details[company_name]['career_page_url']
     sector = companies_details[company_name]['sector']
 
     print(company_name)

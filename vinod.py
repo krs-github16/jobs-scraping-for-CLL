@@ -266,13 +266,15 @@ def apply_workable(company_name,companies_details):
 
     print(company_name)
 
+    df = pd.DataFrame(columns=fields_needed)
+
     count = 0
     job_description, job_type, years_of_experience, job_department, job_location = [''] * 5
     domain = career_page_url.strip('/').split('/')[-1]
     data = {"token": "", "query": "", "location": [], "department": [], "worktype": [], "remote": []}
     page = 1
     next_page = 1
-    df = pd.DataFrame(columns=fields_needed)
+
     try:
         while True:
             if not next_page:

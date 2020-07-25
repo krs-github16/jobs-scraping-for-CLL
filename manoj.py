@@ -193,6 +193,7 @@ def angel_co(company_name, companies_details):
 
     print(company_name)
 
+    df = pd.DataFrame(columns=fields_needed)
     driver = webdriver.Firefox(executable_path=gecko_path)
 
     try:
@@ -200,7 +201,7 @@ def angel_co(company_name, companies_details):
         time.sleep(2)
         page_source = driver.page_source
         count = 0
-        df = pd.DataFrame()
+
         for job in BS(page_source, 'html.parser').find_all(class_='component_e6bd3'):
             try:
                 if job.find('a'):
@@ -272,7 +273,7 @@ def insilico(company_name, companies_details):
 
 
 def loginextsolutions(company_name, companies_details):
-    career_page_url = 'https://www.loginextsolutions.com/job-roles'  # companies_details[company_name]['career_page_url']
+    career_page_url = companies_details[company_name]['career_page_url']
     sector = companies_details[company_name]['sector']
 
     print(company_name)
@@ -312,7 +313,7 @@ def loginextsolutions(company_name, companies_details):
 
 
 def appen(company_name, companies_details):
-    career_page_url = 'https://talent-appen.icims.com/jobs/search?pr=0&in_iframe=1'  # companies_details[company_name]['career_page_url']
+    career_page_url = companies_details[company_name]['career_page_url']
     sector = companies_details[company_name]['sector']
 
     print(company_name)
@@ -356,6 +357,123 @@ def appen(company_name, companies_details):
             break
     return df
 
+
+def zymergen(company_name, companies_details):
+    career_page_url = companies_details[company_name]['career_page_url']
+    sector = companies_details[company_name]['sector']
+
+    print(company_name)
+
+    df = pd.DataFrame()
+    response = requests.get(career_page_url)
+    for script in BS(response.text, 'html.parser').find_all('script', type='text/javascript'):
+        if 'ghjb_d=true;ghjb_a=0;ghjb_job' in str(script):
+            total_jobs = []
+            for i in \
+            str(script).replace('<script type="text/javascript">', '').replace('</script>', '').split('ghjb_jobs = ')[
+                1].replace('},];ghjb_json =', '}];ghjb_json =').split(',"meta":')[0].split(';ghjb_json = {"jobs":'):
+                total_jobs.extend(json.loads(i))
+            for i in total_jobs:
+                job_title = i.get('title').strip()
+                job_description = BS(BS(i.get('content'), 'html.parser').text, 'html.parser').text
+                job_specific_url = i.get('absolute_url')
+                job_location = i.get('location').get('name')
+
+                job_type = np.nan
+                years_of_experience = np.nan
+                job_department = i.get('departments')[0].get('name')
+
+                df = df.append(pd.Series(data=[company_name,
+                                               job_title,
+                                               job_description,
+                                               job_location,
+                                               job_type,
+                                               years_of_experience,
+                                               job_department,
+                                               job_specific_url,
+                                               career_page_url,
+                                               sector], index=fields_needed), ignore_index=True)
+    return df
+
+
+def kore(company_name, companies_details):
+    career_page_url = companies_details[company_name]['career_page_url']
+    sector = companies_details[company_name]['sector']
+
+    print(company_name)
+
+    df = pd.DataFrame(columns=fields_needed)
+    for job in BS(requests.get(career_page_url).text, 'html.parser').find(class_='w-tabs-sections-h').find_all(
+            class_='wpb_text_column')[3:]:
+        if job.find('a', class_=True):
+            if 'in' in job.find('a').get('class')[0] or 'jobdesc' in job.find('a').get('class')[0]:
+                job_title = job.find('p').text.split('Location')[0].strip()
+                job_description = np.nan
+                job_specific_url = job.find('a').get('href')
+                job_location = job.find('p').find_next(class_='careers-location').text.split('Location:')[1].strip()
+
+                job_type = np.nan
+                years_of_experience = np.nan
+                job_department = np.nan
+
+                df = df.append(pd.Series(data=[company_name,
+                                               job_title,
+                                               job_description,
+                                               job_location,
+                                               job_type,
+                                               years_of_experience,
+                                               job_department,
+                                               job_specific_url,
+                                               career_page_url,
+                                               sector], index=fields_needed), ignore_index=True)
+    return df
+
+
+def nvidia(company_name, companies_details):
+    career_page_url = companies_details[company_name]['career_page_url']
+    sector = companies_details[company_name]['sector']
+
+    print(company_name)
+
+    df = pd.DataFrame(columns=fields_needed)
+    offset = 0
+    response = requests.get(
+        career_page_url + '/fs/searchPagination/318c8bb6f553100021d223d9780d30be/{}?clientRequestID=958a11e44f0d4967ab077e9f2b761db0'.format(
+            str(offset)))
+    jobs = response.json().get('body').get('children')[0].get('children')[0].get('listItems')
+    count = 0
+    while jobs:
+        for job in jobs:
+            count += 1
+            job_title = job.get('title').get('instances')[0].get('text')
+            job_specific_url = 'https://nvidia.wd5.myworkdayjobs.com' + job.get('title').get('commandLink')
+            job_location = job.get('subtitles')[-2].get('instances')[0].get('text')
+            job_description = np.nan
+
+            job_type = np.nan
+            years_of_experience = np.nan
+            job_department = np.nan
+
+            df = df.append(pd.Series(data=[company_name,
+                                           job_title,
+                                           job_description,
+                                           job_location,
+                                           job_type,
+                                           years_of_experience,
+                                           job_department,
+                                           job_specific_url,
+                                           career_page_url,
+                                           sector], index=fields_needed), ignore_index=True)
+        offset += len(jobs)
+        response = requests.get(
+            career_page_url + '/fs/searchPagination/318c8bb6f553100021d223d9780d30be/{}?clientRequestID=958a11e44f0d4967ab077e9f2b761db0'.format(
+                str(offset)))
+        if response:
+            jobs = response.json().get('body').get('children')[0].get('children')[0].get('listItems')
+        else:
+            jobs = []
+    return df
+
 #  zebra('Zebra Medical Vision','https://www.zebra-med.com/careers'),
 #  episource('Episource LLC','https://www.episource.com/careers/'),
 #  vicarious('Vicarious','https://www.vicarious.com/careers/'),
@@ -369,3 +487,8 @@ def appen(company_name, companies_details):
 #  angel_co('arya.ai',companies_details),
 #  angel_co('pixuate',companies_details),
 #  angel_co('couture.ai',companies_details)
+# angel_co('streamingo.ai',companies_details),
+# angel_co('orbo.ai',companies_details),
+# zymergen('zymergen', companies_details),
+# kore('kore.ai', companies_details),
+# nvidia('nVidia',companies_details)

@@ -14,11 +14,12 @@ from flashtext import KeywordProcessor
 #from pytablewriter import MarkdownTableWriter
 
 from krs import niramai,locus, oneorigin, alphasense, sayint, casetext
-from manoj import zebra, episource, vicarious, uipath, angel_co, insilico, loginextsolutions, appen
+from manoj import zebra, episource, vicarious, uipath, angel_co, insilico, loginextsolutions, appen, zymergen, kore, nvidia
 from vinod import greenhouse_platform, workday_cognex, kla_tencor, hp, \
     lever_api, hire_withgoogle_api, apply_workable
 from jagadeesh import Haptik_AI, Gramener, Boost_AI, Lumiq_FreshTeam, neurala,\
-    honeywell, IHSMarkit, x_ai, geosys, unbxd, hover, mroads, HHMI_Janelia, Kaggle
+    honeywell, IHSMarkit, x_ai, geosys, unbxd, hover, mroads, HHMI_Janelia, Kaggle, philips, GE_Global, Cella_Vision,\
+    BitRefine,orbital_insight
 from sitaram import abto,kritikal,atlas_elektronik,tobii,philips,tno,visenze,\
     axis,vathos, Artivatic, Pleiades, imageMetrics,sentiosports, L3Harris
 
@@ -108,7 +109,19 @@ if __name__=='__main__':
     companies_details = companiesmd_to_dict(companies_md_url)
     print(companies_details)
 
-    for index,func in enumerate([HHMI_Janelia('HHMI',companies_details),
+    for index,func in enumerate([
+                                 angel_co('streamingo.ai',companies_details),
+                                 angel_co('orbo.ai',companies_details),
+                                 zymergen('zymergen', companies_details),
+                                 kore('kore.ai', companies_details),
+                                 nvidia('nVidia',companies_details),
+                                philips('philips healthcare', companies_details),
+                                GE_Global('GE Global Research', companies_details),
+                                Cella_Vision('Cella Vision', companies_details),
+                                BitRefine('BitRefine Group', companies_details),
+                                orbital_insight('orbital insight', companies_details),
+                                 apply_workable('Pony.ai', companies_details),
+                                 HHMI_Janelia('HHMI',companies_details),
                                  Kaggle('Kaggle', companies_details),
                                  insilico('inSilico medicine', companies_details),
                                  loginextsolutions('logiNext', companies_details),
@@ -176,9 +189,9 @@ if __name__=='__main__':
                                  greenhouse_platform('GumGum', companies_details),
                                  greenhouse_platform('iris automation', companies_details),
                                  hire_withgoogle_api('imimtek',companies_details),
-                                 apply_workable('Pony.ai',companies_details)],1):
+                                 ],1):
 
-        print(index,func.shape)
+        # print(index,func.shape)
         frames.append(func)
 
     jobs_df = pd.concat(frames, axis=0, ignore_index=True)
@@ -191,7 +204,9 @@ if __name__=='__main__':
 
     jobs_df.to_excel(r'outputs//'+'all jobs.xlsx', sheet_name=f'{date}',index=False)
 
-    jobs_df = jobs_df[(jobs_df['in_key_words_list']!='No') & (jobs_df['out_key_words_list']=='No') & (jobs_df['job title length']<=65)].drop(columns=['in_key_words_list','out_key_words_list','job title length']).reset_index()
+    max_length = 65
+
+    jobs_df = jobs_df[(jobs_df['in_key_words_list']!='No') & (jobs_df['out_key_words_list']=='No') & (jobs_df['job title length']<=max_length)].drop(columns=['in_key_words_list','out_key_words_list','job title length']).reset_index()
 
     jobs_df['Company Name'] = "[" + jobs_df['Company Name'].astype(str) + "]" + "(" + jobs_df['Career Page URL'].astype(str) + ")"
 
