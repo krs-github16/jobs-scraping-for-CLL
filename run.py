@@ -188,13 +188,14 @@ if __name__=='__main__':
                                  mroads('mroads',companies_details),
                                  greenhouse_platform('GumGum', companies_details),
                                  greenhouse_platform('iris automation', companies_details),
-                                 hire_withgoogle_api('imimtek',companies_details),
-                                 ],1):
+                                 hire_withgoogle_api('imimtek',companies_details)],1):
 
         # print(index,func.shape)
         frames.append(func)
 
     jobs_df = pd.concat(frames, axis=0, ignore_index=True)
+
+    jobs_df = pd.read_excel(r'outputs//all jobs.xlsx')
 
     jobs_df['in_key_words_list'] = jobs_df['Job Title'].apply(lambda s: in_key_words_list(str(s).strip(), positive_key_words_list))
 
@@ -210,10 +211,13 @@ if __name__=='__main__':
 
     jobs_df['Company Name'] = "[" + jobs_df['Company Name'].astype(str) + "]" + "(" + jobs_df['Career Page URL'].astype(str) + ")"
 
-    jobs_df['Job Title' ] = "[" +jobs_df['Job Title'].astype(str ) +"]" +"(" +jobs_df['Job Specific URL'].astype(str ) +")"
+    jobs_df['Job Title'] = "[" +jobs_df['Job Title'].astype(str) +"]" +"(" +jobs_df['Job Specific URL'].astype(str) +")"
 
     jobs_df = jobs_df[['Market/Sector','Company Name','Job Title','Job Location']].sort_values(by=['Market/Sector','Company Name'], ascending=True).reset_index(drop=True)
 
     jobs_df.to_excel(r'outputs//'+'filtered jobs in required format.xlsx', sheet_name=f'{date}',index=False)
 
     print('end')
+
+
+#df.groupby(['name','month'])['text'].apply(lambda x: ','.join(x)).reset_index()
