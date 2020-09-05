@@ -1,0 +1,134 @@
+C:\Users\krajasekhara\AppData\Local\Continuum\anaconda3\python.exe "C:/Users/krajasekhara/PycharmProjects/CLL jobs scraping/run.py"
+{'haptik.ai': {'sector': 'Conversational AI', 'career_page_url': 'https://haptik.ai/careers/'}, 'avaamo': {'sector': 'Conversational AI', 'career_page_url': 'https://hire.withgoogle.com/public/jobs/avaamocom'}, 'niki.ai': {'sector': 'Conversational AI', 'career_page_url': 'https://angel.co/company/niki/jobs'}, 'next IT': {'sector': 'Conversational AI', 'career_page_url': 'https://chm.tbe.taleo.net/chm03/ats/careers/v2/jobSearch?org=VERINT&cws=72&_ga=2.4630459.982269742'}, 'soundhound': {'sector': 'Conversational AI', 'career_page_url': 'https://boards.greenhouse.io/soundhoundinc/'}, 'zymergen': {'sector': 'Conversational AI', 'career_page_url': 'https://www.zymergen.com/careers/'}, 'kore.ai': {'sector': 'Conversational AI', 'career_page_url': 'https://kore.ai/careers/'}, 'rasa': {'sector': 'Conversational AI', 'career_page_url': 'https://boards.greenhouse.io/rasa'}, 'active.ai': {'sector': 'Conversational AI', 'career_page_url': 'https://active.ai/careers/'}, 'nuacem': {'sector': 'Conversational AI', 'career_page_url': 'https://nuacem.com/careers'}, 'Smartbots.ai': {'sector': 'Conversational AI', 'career_page_url': 'https://www.smartbots.ai/careers/'}, 'IMIMobile': {'sector': 'Conversational AI', 'career_page_url': 'https://imimobile.com/careers'}, 'vernacular.ai': {'sector': 'Conversational AI', 'career_page_url': 'https://angel.co/company/vernacular-ai/jobs'}, 'saarthi.ai': {'sector': 'Conversational AI', 'career_page_url': 'https://angel.co/company/saarthi-ai/jobs'}, 'boost.ai': {'sector': 'Conversational AI', 'career_page_url': 'https://web106.reachmee.com/ext/I002/1350/main?site=6&validator=21304e4cfc10bf6957ad60fe5e4eba40&lang=UK&ref=https%3a%2f%2fwww.boost.ai%2f&ihelper=https://www.boost.ai/career/'}, 'Ori': {'sector': 'Conversational AI', 'career_page_url': 'https://angel.co/company/ori-2/jobs'}, 'floatbot.ai': {'sector': 'Conversational AI', 'career_page_url': 'https://angel.co/company/floatbot-ai-1/jobs'}, 'niramai': {'sector': 'Healthcare/Biotech', 'career_page_url': 'https://www.niramai.com/careers/'}, 'doxper': {'sector': 'Healthcare/Biotech', 'career_page_url': 'https://doxper.com/home/careers/'}, 'tempus': {'sector': 'Healthcare/Biotech', 'career_page_url': 'https://www.tempus.com/careers/'}, 'cognitive scale': {'sector': 'Healthcare/Biotech', 'career_page_url': 'https://hire.withgoogle.com/public/jobs/cognitivescalecom'}, 'freenome': {'sector': 'Healthcare/Biotech', 'career_page_url': 'https://www.freenome.com/careers/'}, 'inSilico medicine': {'sector': 'Healthcare/Biotech', 'career_page_url': 'https://insilico.com/career'}, 'Zebra medical vision': {'sector': 'Healthcare/Biotech', 'career_page_url': 'https://www.zebra-med.com/careers'}, 'Butterfly Network': {'sector': 'Healthcare/Biotech', 'career_page_url': 'https://angel.co/company/butterfly-network/jobs'}, 'Episource LLC': {'sector': 'Healthcare/Biotech', 'career_page_url': 'https://www.episource.com/careers/'}, 'CitiusTech': {'sector': 'Healthcare/Biotech', 'career_page_url': 'https://citiustech.applytojob.com/'}, 'qure.ai': {'sector': 'Healthcare/Biotech', 'career_page_url': 'https://angel.co/company/qure-ai-technologies/jobs'}, 'Uncanny Vision': {'sector': 'Logistics', 'career_page_url': 'https://www.uncannyvision.com/'}, 'logiNext': {'sector': 'Logistics', 'career_page_url': 'https://www.loginextsolutions.com/job-roles'}, 'locus.sh': {'sector': 'Logistics', 'career_page_url': 'https://locus.freshteam.com/jobs'}, 'rubique': {'sector': 'FinTech', 'career_page_url': 'https://www.rubique.com/career'}, 'alphaSense': {'sector': 'FinTech', 'career_page_url': 'https://www.alpha-sense.com/careers'}, 'lendingKart': {'sector': 'FinTech', 'career_page_url': 'https://www.lendingkart.com/careers/'}, 'arya.ai': {'sector': 'FinTech', 'career_page_url': 'https://angel.co/company/arya-ai/jobs'}, 'artivatic.ai': {'sector': 'InsurTech', 'career_page_url': 'https://new.artivatic.ai/blocks/jobs/#'}, 'cropIn': {'sector': 'AgTech', 'career_page_url': 'https://www.cropin.com/careers/'}, 'blue river technology': {'sector': 'AgTech', 'career_page_url': 'http://careers.bluerivertechnology.com/'}, 'persado': {'sector': 'AdTech', 'career_page_url': 'https://www.persado.com/about/careers/job-availability/'}, 'aeye': {'sector': 'Robotics', 'career_page_url': 'https://boards.greenhouse.io/embed/job_board?for=aeyeinc'}, 'AIbrain': {'sector': 'Robotics', 'career_page_url': 'https://aibrain.com/about/careers/'}, 'cloudminds': {'sector': 'Robotics', 'career_page_url': 'https://www.en.cloudminds.com/'}, 'vicarious': {'sector': 'Robotics', 'career_page_url': 'https://www.vicarious.com/careers/'}, 'UI path': {'sector': 'Robotics', 'career_page_url': 'https://www.uipath.com/company/careers/jobs'}, 'Datarobot': {'sector': 'Robotics', 'career_page_url': 'https://www.datarobot.com/careers/'}, 'Narrative Science': {'sector': 'Natural language processing', 'career_page_url': 'https://narrativescience.com/careers/'}, 'Artivatic': {'sector': 'Natural language processing', 'career_page_url': 'https://artivatic.ai/career'}, 'UNBXD': {'sector': 'Natural language processing', 'career_page_url': 'https://unbxd.com/careers/openings/'}, 'oneorigin': {'sector': 'Natural language processing', 'career_page_url': 'https://www.oneorigin.us/careers/'}, 'sharechat': {'sector': 'Natural language processing', 'career_page_url': 'https://www.linkedin.com/company/sharechat'}, 'jina.ai': {'sector': 'Natural language processing', 'career_page_url': 'https://jina.ai/#/jobs'}, 'NetraDyne': {'sector': 'Computer vision', 'career_page_url': 'https://www.netradyne.com/careers/'}, 'clarifai': {'sector': 'Computer vision', 'career_page_url': 'https://www.clarifai.com/careers'}, 'nauto': {'sector': 'Computer vision', 'career_page_url': 'https://www.nauto.com/jobs_list'}, 'clmtec': {'sector': 'Computer vision', 'career_page_url': 'http://www.cimtecimaging.com/contact'}, 'ikomed': {'sector': 'Computer vision', 'career_page_url': 'http://www.ikomed.com/careers/'}, 'algolux': {'sector': 'Computer vision', 'career_page_url': 'https://algolux.com/careers/'}, 'wrnch': {'sector': 'Computer vision', 'career_page_url': 'https://wrnch.recruitee.com/'}, 'Adaptive Vision': {'sector': 'Computer vision', 'career_page_url': 'https://www.adaptive-vision.com/pl/firma/oferty-pracy/'}, 'Plastream': {'sector': 'Computer vision', 'career_page_url': 'http://plastream.net/'}, 'deepvisionai': {'sector': 'Computer vision', 'career_page_url': 'https://www.deepvisionai.com'}, 'spectrico': {'sector': 'Computer vision', 'career_page_url': 'http://spectrico.com/'}, 'pleiades tech': {'sector': 'Computer vision', 'career_page_url': 'http://www.pleiades-technologies.com/en/outils/join-us/'}, 'dxo labs': {'sector': 'Computer vision', 'career_page_url': 'https://www.dxo.com/company/careers/'}, 'geosys': {'sector': 'Computer vision', 'career_page_url': 'https://www.geosys.com/careers/'}, 'exelis vis': {'sector': 'Computer vision', 'career_page_url': 'https://www.harrisgeospatial.com/Company/Careers'}, 'diotasoft': {'sector': 'Computer vision', 'career_page_url': 'http://www.diotasoft.com/index.php/en/apropos-diota#joboffers'}, 'VideoStitch': {'sector': 'Computer vision', 'career_page_url': 'http://www.video-stitch.com/jobs/'}, 'SentioSports': {'sector': 'Computer vision', 'career_page_url': 'http://sentiosports.com/career.html'}, 'gentex corporation': {'sector': 'Computer vision', 'career_page_url': 'https://www.gentex.com/careers/search-jobs/'}, 'a9': {'sector': 'Computer vision', 'career_page_url': 'https://a9.com/work-with-us/'}, 'COGNEX': {'sector': 'Computer vision', 'career_page_url': 'https://cognex.wd1.myworkdayjobs.com/en-US/External_Career_Site'}, 'hp labs': {'sector': 'Computer vision', 'career_page_url': 'https://jobs.hp.com/en-us/Search-Results?CloudSearchValue=nonse&CloudSearchLocation=none&CloudSearchRadius=50&radiusUnit=Miles&prefilters=none'}, 'philips healthcare': {'sector': 'Computer vision', 'career_page_url': 'https://www.careers.philips.com/professional/apac/en/search-results?keywords='}, 'Nokia': {'sector': 'Computer vision', 'career_page_url': 'https://www.nokia.com/about-us/careers/'}, 'Kla Tencor': {'sector': 'Computer vision', 'career_page_url': 'https://careers.kla-tencor.com/jobs/search'}, 'immersive labs': {'sector': 'Computer vision', 'career_page_url': 'https://immersivelabs.com/careers/'}, 'intuitive surgical': {'sector': 'Computer vision', 'career_page_url': 'http://intuitivesurgical.hodesiq.com/job_detail.asp?JobID=2900801'}, 'igbweb': {'sector': 'Computer vision', 'career_page_url': 'https://www.novetta.com/careers/search-jobs/'}, 'imimtek': {'sector': 'Computer vision', 'career_page_url': 'https://hire.withgoogle.com/public/jobs/aquificom'}, 'ppt vision': {'sector': 'Computer vision', 'career_page_url': 'https://career2.successfactors.eu/career?company=datalogics'}, 'HHMI': {'sector': 'Computer vision', 'career_page_url': 'https://hhmi-openhire.silkroad.com/epostings/index.cfm?fuseaction=app.allpositions&company_id=16908&version=1'}, 'occipital': {'sector': 'Computer vision', 'career_page_url': 'http://occipital.com/jobs'}, 'ng': {'sector': 'Computer vision', 'career_page_url': 'http://careers.northropgrumman.com/career_areas.html'}, 'justin.tv': {'sector': 'Computer vision', 'career_page_url': 'http://jobs.justin.tv/index.html'}, 'incogna': {'sector': 'Computer vision', 'career_page_url': 'http://www.incogna.com/?p=careers'}, 'video surf': {'sector': 'Computer vision', 'career_page_url': 'http://www.videosurf.com/jobs'}, 'tyzx': {'sector': 'Computer vision', 'career_page_url': 'https://www.intel.com/content/www/us/en/jobs/jobs-at-intel.html'}, 'object video': {'sector': 'Computer vision', 'career_page_url': 'https://objectvideolabs.com/careers/'}, 'honeywell': {'sector': 'Computer vision', 'career_page_url': 'https://www.honeywell.com/en-us/careers'}, 'skybox': {'sector': 'Computer vision', 'career_page_url': 'http://skyboximaging.com/careers/culture'}, 'park assist': {'sector': 'Computer vision', 'career_page_url': 'https://www.parkassist.com/contact-us/careers/'}, 'ailive': {'sector': 'Computer vision', 'career_page_url': 'http://www.ailive.net/careers.html'}, 'hover': {'sector': 'Computer vision', 'career_page_url': 'https://hover.to/jobs/'}, 'aptina': {'sector': 'Computer vision', 'career_page_url': 'https://www.onsemi.com/careers'}, 'OptraScan website': {'sector': 'Computer vision', 'career_page_url': 'https://www.optrascan.com/why-optrascan/careers'}, 'Honda Research': {'sector': 'Computer vision', 'career_page_url': 'https://www.honda.com/careers/find-a-job'}, 'Image Metrics': {'sector': 'Computer vision', 'career_page_url': 'http://image-metrics.com/company/#careers'}, 'Graftek Imaging': {'sector': 'Computer vision', 'career_page_url': 'https://www.graftek.biz/contact'}, 'Microscan': {'sector': 'Computer vision', 'career_page_url': 'https://microscan.com/company/careers'}, 'DAQRI': {'sector': 'Computer vision', 'career_page_url': 'http://daqri.com/careers/'}, 'kairos': {'sector': 'Computer vision', 'career_page_url': 'https://www.kairos.com/about'}, 'LTU Technologies': {'sector': 'Computer vision', 'career_page_url': 'https://www.ltutech.com/job/'}, 'Code Laboratories': {'sector': 'Computer vision', 'career_page_url': 'https://duo3d.com/company'}, 'FotoNation': {'sector': 'Computer vision', 'career_page_url': 'https://www.fotonation.com/contact/'}, 'imerit': {'sector': 'Computer vision', 'career_page_url': 'https://imerit.net/careers/'}, 'sighthound': {'sector': 'Computer vision', 'career_page_url': 'https://www.sighthound.com/careers/'}, 'Second Spectrum': {'sector': 'Computer vision', 'career_page_url': 'https://www.secondspectrum.com/careers.html'}, 'Curalate': {'sector': 'Computer vision', 'career_page_url': 'https://www.themuse.com/companies/curalate'}, 'Pixm': {'sector': 'Computer vision', 'career_page_url': 'https://pixm.net/contact/'}, 'GumGum': {'sector': 'Computer vision', 'career_page_url': 'https://boards.greenhouse.io/gumgum'}, 'iris automation': {'sector': 'Computer vision', 'career_page_url': 'https://boards.greenhouse.io/irisautomation'}, 'GE Global Research': {'sector': 'Computer vision', 'career_page_url': 'https://jobs.gecareers.com/global/en/home'}, 'Yahoo!': {'sector': 'Computer vision', 'career_page_url': 'http://labs.yahoo.com/'}, 'optra systems': {'sector': 'Computer vision', 'career_page_url': 'https://www.optrasystems.com/about-us/careers/current-openings'}, 'pixuate': {'sector': 'Computer vision', 'career_page_url': 'https://angel.co/company/pixuate/jobs'}, 'Itseez': {'sector': 'Computer vision', 'career_page_url': 'http://itseez.com/jobs/'}, 'ISS Art': {'sector': 'Computer vision', 'career_page_url': 'https://issart.com/contacts/'}, 'KritiKal Solutions': {'sector': 'Computer vision', 'career_page_url': 'http://careers.kritikalvision.ai/jobs/'}, 'FaceX': {'sector': 'Computer vision', 'career_page_url': 'https://facex.io/about.html'}, 'carl zeiss': {'sector': 'Computer vision', 'career_page_url': 'https://www.zeiss.com/corporate/int/careers/job-openings-and-applications.html'}, 'atlas elektronik': {'sector': 'Computer vision', 'career_page_url': 'https://www.atlas-elektronik.com/career/jobs.html'}, 'Nerian Vision GmbH': {'sector': 'Computer vision', 'career_page_url': 'https://nerian.com/company/jobs/'}, 'Vathos Robotics': {'sector': 'Computer vision', 'career_page_url': 'https://www.vathos-robotics.com/careers/'}, 'tordivel': {'sector': 'Computer vision', 'career_page_url': 'http://www.scorpionvision.com/31.html'}, 'abto software': {'sector': 'Computer vision', 'career_page_url': 'https://careers.abtosoftware.com/?s=&vacancy-department='}, 'spacemetric': {'sector': 'Computer vision', 'career_page_url': 'http://spacemetric.com/vacancies/'}, 'smarteye': {'sector': 'Computer vision', 'career_page_url': 'https://smarteye.se/about-us-2/career/'}, 'axis communications': {'sector': 'Computer vision', 'career_page_url': 'https://www.axis.com/about-axis/career/open-positions?'}, 'Cella Vision': {'sector': 'Computer vision', 'career_page_url': 'https://career.cellavision.com/'}, 'anoto': {'sector': 'Computer vision', 'career_page_url': 'https://www.anoto.com/contact-us/'}, 'tobii': {'sector': 'Computer vision', 'career_page_url': 'https://careers.tobii.com/jobs'}, 'oculus': {'sector': 'Computer vision', 'career_page_url': 'https://www.oculus.com/careers/'}, 'flir': {'sector': 'Computer vision', 'career_page_url': 'https://www.flir.com/about/careers/'}, 'Vicator': {'sector': 'Computer vision', 'career_page_url': 'http://www.vicator.com/'}, 'Nine Point Medical': {'sector': 'Computer vision', 'career_page_url': 'http://www.ninepointmedical.com/careers-2/'}, 'Sony ': {'sector': 'Computer vision', 'career_page_url': 'http://www.playstationjobs.co.uk/vacancy/437-Computer-Vision-Researcher-%28Gaming-interfaces%29&page=1'}, 'Skin Analytics': {'sector': 'Computer vision', 'career_page_url': 'https://skin-analytics.com/contact-us/'}, 'Birdi': {'sector': 'Computer vision', 'career_page_url': 'https://hibirdi.com/careers-in-the-space-industry/'}, 'CMR': {'sector': 'Computer vision', 'career_page_url': 'https://www.cmr.no/contact-us/'}, 'philips': {'sector': 'Computer vision', 'career_page_url': 'https://jobs.philips.com/jobs/#200'}, 'layar': {'sector': 'Computer vision', 'career_page_url': 'http://www.layar.com/company/jobs/'}, 'ps-tech': {'sector': 'Computer vision', 'career_page_url': 'http://ps-tech.com/careers'}, 'TNO': {'sector': 'Computer vision', 'career_page_url': 'https://www.tno.nl/nl/career/vacatures/?p=0'}, "SightCorp's website": {'sector': 'Computer vision', 'career_page_url': 'https://sightcorp.com/jobs/'}, 'Ellips': {'sector': 'Computer vision', 'career_page_url': 'https://ellips.com/jobs/'}, 'Satelligence': {'sector': 'Computer vision', 'career_page_url': 'https://satelligence.com/careers'}, 'ayonix': {'sector': 'Computer vision', 'career_page_url': 'http://ayonix.com/'}, 'morpho': {'sector': 'Computer vision', 'career_page_url': 'https://www.morphoinc.com/careers'}, 'crisalix home': {'sector': 'Computer vision', 'career_page_url': 'https://apply.workable.com/crisalix/'}, 'picscout website': {'sector': 'Computer vision', 'career_page_url': 'https://picscout.com/contact'}, 'RSIP Vision Website': {'sector': 'Computer vision', 'career_page_url': 'https://www.rsipvision.com/careers/'}, 'Odd Concepts': {'sector': 'Computer vision', 'career_page_url': 'https://oddconcepts.kr/index.en.html'}, 'visenze': {'sector': 'Computer vision', 'career_page_url': 'https://www.visenze.com/careers'}, 'BitRefine Group': {'sector': 'Computer vision', 'career_page_url': 'https://bitrefine.group/careers'}, 'Face++': {'sector': 'Computer vision', 'career_page_url': 'http://www.faceplusplus.com/'}, 'SenseTime': {'sector': 'Computer vision', 'career_page_url': 'https://joinus.sensetime.com/en'}, 'thundersoft': {'sector': 'Computer vision', 'career_page_url': 'https://www.thundersoft.com/index.php/joinus/index/1-125-125-125'}, 'tusimple': {'sector': 'Computer vision', 'career_page_url': 'https://www.tusimple.com/careers/'}, 'pyimagejobs': {'sector': 'Computer vision', 'career_page_url': 'http://jobs.pyimagesearch.com/ref/3/'}, 'Ignitarium': {'sector': 'Computer vision', 'career_page_url': 'https://ignitarium.com/careers.php'}, 'Wobot Intelligence': {'sector': 'Computer vision', 'career_page_url': 'http://www.wobot.ai/careers'}, 'streamingo.ai': {'sector': 'Computer vision', 'career_page_url': 'https://angel.co/company/streamingo-solutions-1/jobs'}, 'orbo.ai': {'sector': 'Computer vision', 'career_page_url': 'https://angel.co/company/orbo-ai/jobs'}, 'IDfy': {'sector': 'Computer vision', 'career_page_url': 'https://portal.idfy.com/careers'}, 'hyperverge': {'sector': 'Computer vision', 'career_page_url': 'https://hyperverge.co/careers'}, 'Playment': {'sector': 'Computer vision', 'career_page_url': 'https://playment.io/jobs/'}, 'Qualitas Tech': {'sector': 'Computer vision', 'career_page_url': 'https://qualitastech.com/careers/'}, 'Intello Labs': {'sector': 'Computer vision', 'career_page_url': 'https://www.intellolabs.com/career/'}, 'Streamoid Technologies': {'sector': 'Computer vision', 'career_page_url': 'https://angel.co/company/streamoid/jobs'}, 'SensoVision': {'sector': 'Computer vision', 'career_page_url': 'http://sensoviz.com/'}, 'MintM': {'sector': 'Computer vision', 'career_page_url': 'https://www.mintm.com/'}, 'SigTuple': {'sector': 'Computer vision', 'career_page_url': 'https://sigtuple.com/#s-careers'}, 'AIndra Labs': {'sector': 'Computer vision', 'career_page_url': 'https://www.aindralabs.com/careers/'}, 'casetext': {'sector': 'Legal', 'career_page_url': 'https://jobs.lever.co/casetext/'}, 'nuTonomy': {'sector': 'Automotive', 'career_page_url': 'https://www.nutonomy.com/careers/'}, 'zoox': {'sector': 'Automotive', 'career_page_url': 'https://jobs.lever.co/zoox'}, 'Pony.ai': {'sector': 'Automotive', 'career_page_url': 'https://apply.workable.com/pony-dot-ai/'}, 'nVidia': {'sector': 'Hardware', 'career_page_url': 'https://nvidia.wd5.myworkdayjobs.com/NVIDIAExternalCareerSite'}, 'sherpa': {'sector': 'IoT', 'career_page_url': 'https://www.sherpadigitalmedia.com/about/careers/'}, 'C3': {'sector': 'IoT', 'career_page_url': 'https://boards.greenhouse.io/c3iot'}, 'sift science': {'sector': 'Security', 'career_page_url': 'https://sift.com/careers'}, 'Quantiphi Inc': {'sector': 'AI-ML Consultancy', 'career_page_url': 'https://quantiphi.com/careers/career/'}, 'Fractal.ai': {'sector': 'AI-ML Consultancy', 'career_page_url': 'https://fractalanalytics.applytojob.com/'}, 'athenasowl.tv': {'sector': 'Media', 'career_page_url': 'https://www.linkedin.com/company/athenasowl/'}, 'Kaggle': {'sector': 'Data science community', 'career_page_url': 'https://www.kaggle.com/jobs'}, 'sayint.ai': {'sector': 'Analytics', 'career_page_url': 'https://sayint.freshteam.com/jobs'}, 'mroads': {'sector': 'HRTech', 'career_page_url': 'https://www.mroads.com/#/careers'}, 'inFeedo': {'sector': 'HRTech', 'career_page_url': 'https://jobs.infeedo.com/'}, 'speechmatics': {'sector': 'VoiceTech', 'career_page_url': 'https://www.speechmatics.com/about-us/careers/available-roles/'}, 'figure eight': {'sector': 'Others', 'career_page_url': 'https://talent-appen.icims.com/jobs/search?pr=0&in_iframe=1'}, 'datarobot': {'sector': 'Others', 'career_page_url': 'https://www.datarobot.com/careers/'}, 'h2o.ai': {'sector': 'Others', 'career_page_url': 'https://www.h2o.ai/careers/'}, 'neurala': {'sector': 'Others', 'career_page_url': 'https://www.neurala.com/about/careers/openings'}, 'orbital insight': {'sector': 'Others', 'career_page_url': 'https://orbitalinsight.com/company/careers/'}, 'openAI': {'sector': 'Others', 'career_page_url': 'https://jobs.lever.co/openai'}, 'x.ai': {'sector': 'Others', 'career_page_url': 'https://x.ai/jobs/'}, 'couture.ai': {'sector': 'Others', 'career_page_url': 'https://angel.co/couture-ai/jobs'}, 'lumiq.ai': {'sector': 'Others', 'career_page_url': 'https://lumiq.freshteam.com/jobs'}, 'Pramati': {'sector': 'Others', 'career_page_url': 'https://www.pramati.com/careers/'}, 'Gramener': {'sector': 'Others', 'career_page_url': 'https://gramener.com/careers/#?show=all'}, 'IHS Markit': {'sector': 'Others', 'career_page_url': 'https://careers.ihsmarkit.com/search.php'}}
+streamingo.ai
+orbo.ai
+zymergen
+kore.ai
+nVidia
+philips healthcare
+GE Global Research
+Cella Vision
+BitRefine Group
+orbital insight
+Pony.ai
+<<<<<<<<<<<<<<<<<<<<<<< Page Number is 1 >>>>>>>>>>>>>>>>>>>>
+<<<<<<<<<<<<<<<<<<<<<<< Page Number is 2 >>>>>>>>>>>>>>>>>>>>
+<<<<<<<<<<<<<<<<<<<<<<< Page Number is 3 >>>>>>>>>>>>>>>>>>>>
+<<<<<<<<<<<<<<<<<<<<< Pagination completed 4 >>>>>>>>>>>>>>>>>>>
+HHMI
+Kaggle
+inSilico medicine
+C:\Users\krajasekhara\PycharmProjects\CLL jobs scraping\manoj.py:242: UserWarning: No parser was explicitly specified, so I'm using the best available HTML parser for this system ("lxml"). This usually isn't a problem, but if you run this code on another system, or in a different virtual environment, it may use a different parser and behave differently.
+
+The code that caused this warning is on line 242 of the file C:\Users\krajasekhara\PycharmProjects\CLL jobs scraping\manoj.py. To get rid of this warning, pass the additional argument 'features="lxml"' to the BeautifulSoup constructor.
+
+  for job in BS(requests.get(career_page_url,"lxml").text).find_all(class_='t649__col'):
+logiNext
+C:\Users\krajasekhara\PycharmProjects\CLL jobs scraping\manoj.py:282: UserWarning: No parser was explicitly specified, so I'm using the best available HTML parser for this system ("lxml"). This usually isn't a problem, but if you run this code on another system, or in a different virtual environment, it may use a different parser and behave differently.
+
+The code that caused this warning is on line 282 of the file C:\Users\krajasekhara\PycharmProjects\CLL jobs scraping\manoj.py. To get rid of this warning, pass the additional argument 'features="lxml"' to the BeautifulSoup constructor.
+
+  response = BS(requests.get(career_page_url,"lxml").text)
+figure eight
+artivatic.ai
+pleiades tech
+Image Metrics
+SentioSports
+exelis vis
+locus.sh
+niramai
+oneorigin
+alphaSense
+Zebra medical vision
+Episource LLC
+vicarious
+UI path
+immersive labs
+COGNEX
+Kla Tencor
+<<<<<<<<<<<<<< Pagination completed 21 >>>>>>>>>>>>>>>>
+hp labs
+<<<<<<<<<<<<<< Pagination completed >>>>>>>>>>>>>>>
+haptik.ai
+Gramener
+'NoneType' object has no attribute 'get_text'
+<<<<<<<<<<<<<<<<<<<<< This company got an issue https://gramener.com/careers/#?show=all >>>>>>>>>>>>>>>>>>>>>>>
+'NoneType' object has no attribute 'get_text'
+<<<<<<<<<<<<<<<<<<<<< This company got an issue https://gramener.com/careers/#?show=all >>>>>>>>>>>>>>>>>>>>>>>
+'NoneType' object has no attribute 'get_text'
+<<<<<<<<<<<<<<<<<<<<< This company got an issue https://gramener.com/careers/#?show=all >>>>>>>>>>>>>>>>>>>>>>>
+'NoneType' object has no attribute 'get_text'
+<<<<<<<<<<<<<<<<<<<<< This company got an issue https://gramener.com/careers/#?show=all >>>>>>>>>>>>>>>>>>>>>>>
+'NoneType' object has no attribute 'get_text'
+<<<<<<<<<<<<<<<<<<<<< This company got an issue https://gramener.com/careers/#?show=all >>>>>>>>>>>>>>>>>>>>>>>
+'NoneType' object has no attribute 'get_text'
+<<<<<<<<<<<<<<<<<<<<< This company got an issue https://gramener.com/careers/#?show=all >>>>>>>>>>>>>>>>>>>>>>>
+'NoneType' object has no attribute 'get_text'
+<<<<<<<<<<<<<<<<<<<<< This company got an issue https://gramener.com/careers/#?show=all >>>>>>>>>>>>>>>>>>>>>>>
+'NoneType' object has no attribute 'get_text'
+<<<<<<<<<<<<<<<<<<<<< This company got an issue https://gramener.com/careers/#?show=all >>>>>>>>>>>>>>>>>>>>>>>
+'NoneType' object has no attribute 'get_text'
+<<<<<<<<<<<<<<<<<<<<< This company got an issue https://gramener.com/careers/#?show=all >>>>>>>>>>>>>>>>>>>>>>>
+'NoneType' object has no attribute 'get_text'
+<<<<<<<<<<<<<<<<<<<<< This company got an issue https://gramener.com/careers/#?show=all >>>>>>>>>>>>>>>>>>>>>>>
+'NoneType' object has no attribute 'get_text'
+<<<<<<<<<<<<<<<<<<<<< This company got an issue https://gramener.com/careers/#?show=all >>>>>>>>>>>>>>>>>>>>>>>
+'NoneType' object has no attribute 'get_text'
+<<<<<<<<<<<<<<<<<<<<< This company got an issue https://gramener.com/careers/#?show=all >>>>>>>>>>>>>>>>>>>>>>>
+'NoneType' object has no attribute 'get_text'
+<<<<<<<<<<<<<<<<<<<<< This company got an issue https://gramener.com/careers/#?show=all >>>>>>>>>>>>>>>>>>>>>>>
+'NoneType' object has no attribute 'get_text'
+<<<<<<<<<<<<<<<<<<<<< This company got an issue https://gramener.com/careers/#?show=all >>>>>>>>>>>>>>>>>>>>>>>
+boost.ai
+lumiq.ai
+sayint.ai
+casetext
+tempus
+soundhound
+rasa
+clarifai
+freenome
+nauto
+neurala
+honeywell
+IHS Markit
+x.ai
+abto software
+KritiKal Solutions
+atlas elektronik
+tobii
+philips
+TNO
+visenze
+axis communications
+Vathos Robotics
+aeye
+C3
+openAI
+cognitive scale
+Expecting value: line 1 column 1 (char 0)
+<<<<<<<<<<<<<<<<<<<<< This company got an issue https://hire.withgoogle.com/public/jobs/cognitivescalecom >>>>>>>>>>>>>>>>>>>>>>>
+avaamo
+Expecting value: line 1 column 1 (char 0)
+<<<<<<<<<<<<<<<<<<<<< This company got an issue https://hire.withgoogle.com/public/jobs/avaamocom >>>>>>>>>>>>>>>>>>>>>>>
+niki.ai
+vernacular.ai
+saarthi.ai
+Ori
+floatbot.ai
+Butterfly Network
+arya.ai
+pixuate
+couture.ai
+geosys
+UNBXD
+hover
+mroads
+GumGum
+iris automation
+imimtek
+Expecting value: line 1 column 1 (char 0)
+<<<<<<<<<<<<<<<<<<<<< This company got an issue https://hire.withgoogle.com/public/jobs/aquificom >>>>>>>>>>>>>>>>>>>>>>>
+end
+
+Process finished with exit code 0
