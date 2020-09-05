@@ -188,14 +188,15 @@ if __name__=='__main__':
                                  mroads('mroads',companies_details),
                                  greenhouse_platform('GumGum', companies_details),
                                  greenhouse_platform('iris automation', companies_details),
-                                 hire_withgoogle_api('imimtek',companies_details)],1):
+                                 hire_withgoogle_api('imimtek',companies_details)
+                                 ],1):
 
         # print(index,func.shape)
         frames.append(func)
 
     jobs_df = pd.concat(frames, axis=0, ignore_index=True)
 
-    jobs_df = pd.read_excel(r'outputs//all jobs.xlsx')
+    #jobs_df = pd.read_excel(r'outputs//all jobs.xlsx')
 
     jobs_df['in_key_words_list'] = jobs_df['Job Title'].apply(lambda s: in_key_words_list(str(s).strip(), positive_key_words_list))
 
