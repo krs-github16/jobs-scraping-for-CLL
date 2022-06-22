@@ -1,5 +1,5 @@
 scrapy==2.1.0
-numpy==1.18.1
+numpy==1.22.0
 pandas==1.0.3
 requests==2.23.0
 regex==2020.1.8
